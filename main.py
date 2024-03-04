@@ -1,3 +1,3 @@
-from modules.getClients import searchName
+import modules.getClients as cliente
 
-searchName()
+print(cliente.imprimirPais())
