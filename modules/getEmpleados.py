@@ -1,6 +1,6 @@
 import storage.empleado as emp
 
-def getClienteJefe7(N):
+def getEmpleadoJefe(N):
     result = []
     for val in emp.empleado:
         if(val.get("codigo_jefe") == N):
@@ -10,7 +10,7 @@ def getClienteJefe7(N):
             })
     return result
 
-def getJefe():
+def getJefe7():
     result = []
     for val in emp.empleado:
         if(val.get("codigo_jefe") == None):
@@ -19,5 +19,16 @@ def getJefe():
                 "nombre": val.get("nombre"),
                 "apellidos": f'{val.get("apellido1")}" "{val.get("apellido2")}',
                 "email": val.get("email")
+            })
+    return result
+
+def getEmpleadoNoRepresntanteVentas():
+    result = []
+    for val in emp.empleado:
+        if(val.get("puesto") != "Representante Ventas"):
+            result.append({
+                "nombre": val.get("nombre"),
+                "apellidos": f'{val.get("apellido1")}" "{val.get("apellido2")}',
+                "puesto": val.get("puesto")
             })
     return result
