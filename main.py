@@ -34,3 +34,10 @@ print(tabulate(Pedido.getEstadosPedido(), headers=["Estados"], tablefmt="grid"))
 print("\n", "\n")
 
 #Devuelva un listado con el codigo del cliente de aquellos clientes que realizaron algun pago en 2008. Tenga en cuenta que debera eliminar aquellos codigos de cliente que saldran repetidos
+
+print("#9", "Devuelva un listado con el codigo del pedido, codigo de cliente, fecha esperada y fecha de entrega de los pedidos que no han sido entregado al tiempo")
+print(tabulate(Pedido.getPedidosTarde(), headers=["Codigo pedido", "Codigo cliente", "fecha esperada", "fecha entregada", "Dias de retrazo", "Comentario"], tablefmt="grid"))
+print("\n", "\n")
+
+print("#10", "Devuelva un listado con el codigo del pedido, codigo de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos 2 dias antes de la fecha entregada")
+print(tabulate(Pedido.getPedidos2DiasTarde(), headers=["Codigo pedido", "Codigo cliente", "fecha esperada", "fecha entregada", "Dias antes", "Comentario"], tablefmt="grid"))
