@@ -28,6 +28,18 @@ def getPagoPaypal2008():
             if año == 2008 and metodo == "PayPal":
                 result.append([
                     val.get("codigo_cliente"),
-                    val.get("total")
+                    val.get("id_transaccion"),
+                    val.get("total"),
                 ])
+                
+    result.sort(key=lambda x: x[1], reverse=True)
+    return result
+
+def getFormasPago():
+    result = []
+    for val in pag.pago:
+        if [val.get("forma_pago")] not in result:
+            result.append([
+                val.get("forma_pago")
+            ])
     return result

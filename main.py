@@ -5,6 +5,7 @@ import modules.getEmpleados as Empleado
 import modules.getClients as Cliente
 import modules.getPedido as Pedido
 import modules.getPago as Pago
+import modules.getProducto as Producto
 
 print("\n", "\n", "#1", "Devuelve un listado con el codigo de oficina y la ciudad donde hay oficinas")
 print(tabulate(Oficina.getOficinaCiudad(), headers=["Codigo Oficina", "Ciudad"], tablefmt="grid"))
@@ -55,5 +56,13 @@ print(tabulate(Pedido.getPedidosEnero(), headers=["Codigo pedido", "Comentario"]
 print("\n", "\n")
 
 print("#13", "Devuelve un listado con todos los pagos que se realizaron en el 2008 mediante paypal ordene el resultado de mayor a menor")
-print(tabulate(Pago.getPagoPaypal2008(), headers=["Codigo cliente", "Total"], tablefmt="grid"))
+print(tabulate(Pago.getPagoPaypal2008(), headers=["Codigo cliente", "ID", "Total"], tablefmt="grid"))
+print("\n", "\n")
+
+print("#14", "Devuelve un listado con todas las formas de pago, tenga en cuenta que no deben salir formas repetidas")
+print(tabulate(Pago.getFormasPago(), headers=["Formas de pago"], tablefmt="grid"))
+print("\n", "\n")
+
+print("#15", "Devuelve un listado con todos los productos que forman parte de la gama Ornamentales, y que tienen mas de 100 unidades en stock ordenados de mayor a menor segun su precio")
+print(tabulate(Pago.getFormasPago(), headers=["ID producto", "Cantidad en stock", "Precio"], tablefmt="grid"))
 print("\n", "\n")
