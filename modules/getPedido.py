@@ -77,3 +77,24 @@ def getPedidos2DiasTarde():
                         "No hay comentario"
                         ])
     return result
+
+def getPedidosCancelados():
+    result = []
+    for val in ped.pedido:
+        estado = val.get("estado")
+        fecha = "/".join(val.get("fecha_pedido").split("-")[::-1])
+        fecha = datetime.strptime(fecha, "%d/%m/%Y")
+        año = fecha.year
+        
+        if estado == "Rechazado" and año == 2009:
+            if val.get("comentario") == None:
+                result.append([
+                    val.get("codigo_pedido"),
+                    "Ninguno"
+                ])
+            else:
+                result.append([
+                    val.get("codigo_pedido"),
+                    val.get("comentario")
+                ])
+    return result

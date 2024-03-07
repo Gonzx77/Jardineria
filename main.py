@@ -45,3 +45,7 @@ print("\n", "\n")
 print("#10", "Devuelva un listado con el codigo del pedido, codigo de cliente, fecha esperada y fecha de entrega de los pedidos cuya fecha de entrega ha sido al menos 2 dias antes de la fecha entregada")
 print(tabulate(Pedido.getPedidos2DiasTarde(), headers=["Codigo pedido", "Codigo cliente", "fecha esperada", "fecha entregada", "Dias antes", "Comentario"], tablefmt="grid"))
 print("\n", "\n")
+
+print("11", "Devuelve un listado de todos los pedidos que fueron rechazados en 2009")
+print(tabulate(Pedido.getPedidosCancelados(), headers=["Codigo pedido", "Comentario"], tablefmt="grid"))
+print("\n", "\n")
