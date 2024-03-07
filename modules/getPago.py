@@ -4,8 +4,6 @@ from datetime import datetime
 def getPagos2008():
     result = []
     for val in pag.pago:
-        
-        fecha = val.get("fecha_pago")
         fecha = "/".join(val.get("fecha_pago").split("-")[::-1])
 
         fecha = datetime.strptime(fecha, "%d/%m/%Y")

@@ -49,3 +49,7 @@ print("\n", "\n")
 print("#11", "Devuelve un listado de todos los pedidos que fueron rechazados en 2009")
 print(tabulate(Pedido.getPedidosCancelados(), headers=["Codigo pedido", "Comentario"], tablefmt="grid"))
 print("\n", "\n")
+
+print("#12", "Devuelve un listado de todos los pedidos que han sido entregado en el mes de enero de cualquier año")
+print(tabulate(Pedido.getPedidosEnero(), headers=["Codigo pedido", "Comentario"], tablefmt="grid"))
+print("\n", "\n")
