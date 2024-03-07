@@ -102,12 +102,20 @@ def getPedidosCancelados():
 def getPedidosEnero():
     result = []   
     for val in ped.pedido:
-        fecha = "/".join(val.get("fecha_entrega").split("-")[::-1])
-        fecha = datetime.strptime(fecha, "%d/%m/%Y")
-        print(fecha)
-        mes = fecha.month
-        if str(mes) == "01" and val.get("fecha_entrega") != None:
-            result.append([
-                val.get("codigo_pedido"),
-                val.get("comentario")
-            ])
+        fecha = val.get("fecha_entrega")
+        estado = val.get("estado")
+        if estado == "Entregado" and fecha != None:
+            fecha = datetime.strptime(fecha, "%Y-%m-%d")
+            mes = fecha.month
+            if mes == 1:
+                if val.get("comentario") != None:
+                    result.append([
+                        val.get("codigo_pedido"),
+                        val.get("comentario")
+                    ])
+                else:
+                    result.append([
+                        val.get("codigo_pedido"),
+                        "Ninguno"
+                    ])
+    return result

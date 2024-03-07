@@ -4,9 +4,9 @@ from datetime import datetime
 def getPagos2008():
     result = []
     for val in pag.pago:
-        fecha = "/".join(val.get("fecha_pago").split("-")[::-1])
+        fecha = val.get("fecha_pago")
 
-        fecha = datetime.strptime(fecha, "%d/%m/%Y")
+        fecha = datetime.strptime(fecha, "%Y-%m-%d")
         año = fecha.year
         
         if año == 2008:
@@ -15,4 +15,19 @@ def getPagos2008():
                 val.get("codigo_cliente")
                 ])
                 
+    return result
+
+def getPagoPaypal2008():
+    result=[]
+    for val in pag.pago:
+        fecha = val.get("fecha_pago")
+        metodo = val.get("forma_pago")
+        if fecha != None:
+            fecha = datetime.strptime(fecha, "%Y-%m-%d")
+            año = fecha.year
+            if año == 2008 and metodo == "PayPal":
+                result.append([
+                    val.get("codigo_cliente"),
+                    val.get("total")
+                ])
     return result

@@ -53,3 +53,7 @@ print("\n", "\n")
 print("#12", "Devuelve un listado de todos los pedidos que han sido entregado en el mes de enero de cualquier año")
 print(tabulate(Pedido.getPedidosEnero(), headers=["Codigo pedido", "Comentario"], tablefmt="grid"))
 print("\n", "\n")
+
+print("#13", "Devuelve un listado con todos los pagos que se realizaron en el 2008 mediante paypal ordene el resultado de mayor a menor")
+print(tabulate(Pago.getPagoPaypal2008(), headers=["Codigo cliente", "Total"], tablefmt="grid"))
+print("\n", "\n")
