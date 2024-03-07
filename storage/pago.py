@@ -7,7 +7,7 @@ pago = [
         "total": 2000
     },
     {
-        "codigo_cliente": 1,
+        "codigo_cliente": 2,
         "forma_pago": "PayPal",
         "id_transaccion": "ak-std-000002",
         "fecha_pago": "2008-12-10",

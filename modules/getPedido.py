@@ -1,5 +1,5 @@
 import storage.pedido as ped
-from datetime import datetime, date
+from datetime import datetime
 
 def getEstadosPedido():
     result = []
@@ -42,10 +42,6 @@ def getPedidosTarde():
                         dif,
                         "No hay comentario"
                         ])
-            else:
-                result
-        else:
-            result
     return result
 
 def getPedidos2DiasTarde():
@@ -80,8 +76,4 @@ def getPedidos2DiasTarde():
                         dif,
                         "No hay comentario"
                         ])
-            else:
-                result
-        else:
-            result
     return result
