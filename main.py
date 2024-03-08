@@ -64,5 +64,5 @@ print(tabulate(Pago.getFormasPago(), headers=["Formas de pago"], tablefmt="grid"
 print("\n", "\n")
 
 print("#15", "Devuelve un listado con todos los productos que forman parte de la gama Ornamentales, y que tienen mas de 100 unidades en stock ordenados de mayor a menor segun su precio")
-print(tabulate(Pago.getFormasPago(), headers=["ID producto", "Cantidad en stock", "Precio"], tablefmt="grid"))
+print(tabulate(Producto.getProductOrnamentales(), headers=["ID producto", "Cantidad en stock", "Precio"], tablefmt="grid"))
 print("\n", "\n")
