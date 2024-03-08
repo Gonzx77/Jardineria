@@ -11,7 +11,9 @@ import modules.getProducto as Producto
 
 def menu():
     print(f"""
+          
         --- Menu Principal ---
+        
         1. Clientes
         2. Empleados
         3. Oficina
@@ -32,6 +34,5 @@ def menu():
         Pedido.menu()
     elif op == 6:
         Producto.menu()
-
-        
+           
 menu()

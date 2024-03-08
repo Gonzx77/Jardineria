@@ -23,7 +23,7 @@ def getCiudadTelefonoDEEspaña():
 
 def menu():
     print(F"""
-        1. Obtener listado de todas las oficinas y su cudad
+        1. Obtener listado de todas las oficinas y su ciudad
         2. Obtener listado de oficinas con su telefono de España""")
     op = int(input("Ingrese opcion: "))
     if op == 1:
