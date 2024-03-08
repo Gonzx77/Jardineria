@@ -1,4 +1,5 @@
 import storage.producto as pro
+from tabulate import tabulate
 
 def getProductOrnamentales():
     result = []
@@ -11,3 +12,11 @@ def getProductOrnamentales():
             ])
             
     return result
+
+def menu():
+    print(f"""
+          1. Obtener productos de la gama ornamentales
+          """)
+    op = int(input("Ingrese opcion"))
+    if op == 1:
+        print(tabulate(getProductOrnamentales(), headers=["ID producto", "Cantidad en stock", "Precio"], tablefmt="grid"))

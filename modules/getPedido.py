@@ -1,5 +1,6 @@
 import storage.pedido as ped
 from datetime import datetime
+from tabulate import tabulate
 
 def getEstadosPedido():
     result = []
@@ -78,7 +79,7 @@ def getPedidos2DiasTarde():
                         ])
     return result
 
-def getPedidosCancelados():
+def getPedidosCancelados2009():
     result = []
     for val in ped.pedido:
         estado = val.get("estado")
@@ -119,3 +120,23 @@ def getPedidosEnero():
                         "Ninguno"
                     ])
     return result
+
+def menu():
+    print(f"""
+          1. Obtener todos los posibles estados de un pedido
+          2. Obtener todos los pedidos que se entregaron tarde
+          3. Obtener todos los pedidos que se entregaron 2 o mas dias tarde
+          4. Obtener todos los pedidos cancelados en 2009
+          5. Obtener todos los pedidos entregados enero
+          """)
+    op = int(input("Ingrese opcion: "))
+    if op == 1:
+        print(tabulate(getEstadosPedido(), headers=["Estados"], tablefmt="grid"))
+    elif op == 2:
+        print(tabulate(getPedidosTarde(), headers=["Codigo pedido", "Codigo cliente", "fecha esperada", "fecha entregada", "Dias de retrazo", "Comentario"], tablefmt="grid"))
+    elif op == 3:
+        print(tabulate(getPedidos2DiasTarde(), headers=["Codigo pedido", "Codigo cliente", "fecha esperada", "fecha entregada", "Dias antes", "Comentario"], tablefmt="grid"))
+    elif op == 4:
+        print(tabulate(getPedidosCancelados2009(), headers=["Codigo pedido", "Comentario"], tablefmt="grid"))
+    elif op == 5:
+        print(tabulate(getPedidosEnero(), headers=["Codigo pedido", "Comentario"], tablefmt="grid"))
