@@ -121,14 +121,10 @@ def menu():
         
         
         
-    again = input(f"""
-            
-    Desea realizar otra consulta? (Si / No): """)
+    again = input(f""" \n Desea realizar otra consulta? (Si / No): """)
     
     if again.lower() == "si":
         import modules.again as againM
         againM.again()
     else:
-        print(f"""
-            Gracias por usar nuestro sistema! :)
-            """)
+        print("Gracias por usar nuestro programa!")

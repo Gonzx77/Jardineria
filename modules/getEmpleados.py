@@ -109,8 +109,8 @@ def menu():
     Desea realizar otra consulta? (Si / No): """)
     
     if again.lower() == "si":
-        import modules.again as againM
-        againM.again()
+        import modules.again as again
+        again.again()
     else:
         print(f"""
             Gracias por usar nuestro sistema! :)

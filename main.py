@@ -22,20 +22,28 @@ def menuInicial():
         """)
     
     op = (input("Ingrese opcion: "))
-    if op == "1":
-        Cliente.menu()
-    elif op == "2":
-        Empleado.menu()
-    elif op == "3":
-        Oficina.menu()
-    elif op == "4":
-        Pago.menu()
-    elif op == "5":
-        Pedido.menu()
-    elif op == "6":
-        Producto.menu()
-    else:
-        print("Esta opcion no existe")
-        menuInicial()
+    while True:
+        if op == "1":
+            Cliente.menu()
+            break
+        elif op == "2":
+            Empleado.menu()
+            break
+        elif op == "3":
+            Oficina.menu()
+            break
+        elif op == "4":
+            Pago.menu()
+            break
+        elif op == "5":
+            Pedido.menu()
+            break
+        elif op == "6":
+            Producto.menu()
+            break
+        else:
+            print("Esta opcion no existe")
+        
+        
         
 menuInicial()
