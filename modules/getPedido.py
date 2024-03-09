@@ -123,12 +123,12 @@ def getPedidosEnero():
 
 def menu():
     print(f"""
-          1. Obtener todos los posibles estados de un pedido
-          2. Obtener todos los pedidos que se entregaron tarde
-          3. Obtener todos los pedidos que se entregaron 2 o mas dias tarde
-          4. Obtener todos los pedidos cancelados en 2009
-          5. Obtener todos los pedidos entregados enero
-          """)
+        1. Obtener todos los posibles estados de un pedido
+        2. Obtener todos los pedidos que se entregaron tarde
+        3. Obtener todos los pedidos que se entregaron 2 o mas dias tarde
+        4. Obtener todos los pedidos cancelados en 2009
+        5. Obtener todos los pedidos entregados enero
+        """)
     op = int(input("Ingrese opcion: "))
     if op == 1:
         print(tabulate(getEstadosPedido(), headers=["Estados"], tablefmt="grid"))

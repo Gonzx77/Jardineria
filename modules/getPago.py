@@ -47,10 +47,10 @@ def getFormasPago():
 
 def menu():
     print(f"""
-          1. Obtener todos los pagos realizados en 2008
-          2. Obtener todos los pagos hechos con PayPal en 2008
-          3. Obtener todas las posibles formas de pago
-          """)
+        1. Obtener todos los pagos realizados en 2008
+        2. Obtener todos los pagos hechos con PayPal en 2008
+        3. Obtener todas las posibles formas de pago
+        """)
     op = int(input("Ingrese opcion: "))
     if op == 1:
         print(tabulate(getPagos2008(), headers=["Codigo cliente"], tablefmt="grid"))

@@ -1,14 +1,17 @@
 import storage.empleado as emp
 from tabulate import tabulate
 
-def getEmpleadoJefe(N):
+def getEmpleadoJefe(x):
     result = []
     for val in emp.empleado:
-        if(val.get("codigo_jefe") == N):
+        if(val.get("codigo_jefe") == x):
             result.append([
                 val.get("nombre"),
                 val.get("apellido1"),
-                val.get("apellido2")
+                val.get("apellido2"),
+                val.get("email"),
+                val.get("puesto"),
+                val.get("codigo_jefe")
             ])
     return result
 
@@ -21,7 +24,8 @@ def getJefe():
                 val.get("nombre"),
                 val.get("apellido1"),
                 val.get("apellido2"),
-                val.get("email")
+                val.get("email"),
+                val.get("puesto")
             ])
     return result
 
@@ -33,20 +37,81 @@ def getEmpleadoNoRepresntanteVentas():
                 val.get("nombre"),
                 val.get("apellido1"),
                 val.get("apellido2"),
+                val.get("email"),
                 val.get("puesto")
             ])
     return result
 
+def getEmpleadoOficina(x):
+    result = []
+    for val in emp.empleado:
+        if(val.get("codigo_oficina") == x):
+            result.append([
+                val.get("nombre"),
+                val.get("apellido1"),
+                val.get("apellido2"),
+                val.get("email"),
+                val.get("puesto"),
+                val.get("codigo_jefe"),
+                val.get("codigo_oficina")
+            ])
+    return result
+
 def menu():
-    print(f"""
-          1. Obtener empleados cuyo jefe es el jefe #7
-          2. Obtener jefe
-          3. Obtener empleados que no son representantes de ventas""")
+    listJefes = []
+    listOficinas = []
+    for val in emp.empleado:
+        if val.get("codigo_jefe") not in listJefes:
+            listJefes.append(val.get("codigo_jefe"))
+    for val in emp.empleado:
+        if val.get("codigo_oficina") not in listOficinas:
+            listOficinas.append(val.get("codigo_oficina"))
     
-    op = int(input("Ingrese opcion: "))
-    if op == 1:
-        print(tabulate(getEmpleadoJefe(7), headers=["Nombre", "Apellido 1", "Apellido 2"], tablefmt="grid"))
-    elif op == 2:
-        print(tabulate(getJefe(), headers=["Nombre", "Apellido 1", "Apellido 2", "Email"], tablefmt="grid"))
-    elif op == 3:
-        print(tabulate(getEmpleadoNoRepresntanteVentas(), headers=["Nombre", "Apellido 1", "Apellido 2", "Puesto"], tablefmt="grid"))
+    print(f"""
+        1. Obtener todos los empleados de un Jefe
+        2. Obtener jefe
+        3. Obtener empleados que no son representantes de ventas
+        4. Obtener empleados de una misma oficiona
+        """)
+    
+    op = input("Ingrese opcion: ")
+    
+    while True:
+        if op == "1":
+            x = int(input("Ingrese codigo del Jefe: "))
+            if x in listJefes:
+                print(tabulate(getEmpleadoJefe(x), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto", "Codigo Jefe"], tablefmt="github"))
+                break
+            else:
+                print(f"""Error: Este Jefe no existe, los Jefes existentes son:
+                    {listJefes}""")
+                
+        elif op == "2":
+            print(tabulate(getJefe(), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto"], tablefmt="github"))
+            break
+            
+        elif op == "3":
+            print(tabulate(getEmpleadoNoRepresntanteVentas(), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto"], tablefmt="github"))
+            break
+        
+        elif op == "4":
+            x = input("Ingresa codigo de la oficina: ")
+            if x in listOficinas:
+                print(tabulate(getEmpleadoOficina(x), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto", "Codigo Jefe", "Oficina"], tablefmt="github"))
+                break
+            else:
+                print(f"""Error: Esta oficina no existe, las oficinas existentes son:
+                    {listOficinas}""")
+                
+                
+    again = input(f"""
+            
+    Desea realizar otra consulta? (Si / No): """)
+    
+    if again.lower() == "si":
+        import modules.again as againM
+        againM.again()
+    else:
+        print(f"""
+            Gracias por usar nuestro sistema! :)
+            """)
