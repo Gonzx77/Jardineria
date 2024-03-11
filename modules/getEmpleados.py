@@ -113,5 +113,5 @@ def menu():
         again.again()
     else:
         print(f"""
-            Gracias por usar nuestro sistema! :)
+            Gracias por usar nuestro sistema!
             """)

@@ -127,4 +127,6 @@ def menu():
         import modules.again as againM
         againM.again()
     else:
-        print("Gracias por usar nuestro programa!")
+        print(f"""
+              Gracias por usar nuestro sistema!
+              """)

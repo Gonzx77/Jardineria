@@ -21,8 +21,9 @@ def menuInicial():
         6. Producto
         """)
     
-    op = (input("Ingrese opcion: "))
+    op = ""
     while True:
+        op = input("Ingrese opcion: ")
         if op == "1":
             Cliente.menu()
             break
