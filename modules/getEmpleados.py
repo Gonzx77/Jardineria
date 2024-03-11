@@ -72,6 +72,7 @@ def menu():
         2. Obtener jefe
         3. Obtener empleados que no son representantes de ventas
         4. Obtener empleados de una misma oficiona
+        0. Salir
         """)
     
     op = input("Ingrese opcion: ")
@@ -103,15 +104,22 @@ def menu():
                 print(f"""Error: Esta oficina no existe, las oficinas existentes son:
                     {listOficinas}""")
                 
+        elif op == "0":
+            break
+        
+        else:
+            print("Esta opcion no existe")
+            op = input("Ingrese opcion: ")
+                
                 
     again = input(f"""
             
     Desea realizar otra consulta? (Si / No): """)
     
     if again.lower() == "si":
-        import modules.again as again
-        again.again()
+        None
     else:
         print(f"""
             Gracias por usar nuestro sistema!
             """)
+        exit()

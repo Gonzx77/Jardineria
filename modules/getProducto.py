@@ -4,8 +4,9 @@ from tabulate import tabulate
 def getProductOrnamentales():
     result = []
     for val in pro.producto:
-        if val.get("gama") == "Aromáticas" and val.get("cantidad_en_stock") > 100:
+        if val.get("gama") == "Ornamentales" and val.get("cantidad_en_stock") > 100:
             result.append([
+                val.get("gama"),
                 val.get("codigo_producto"),
                 val.get("cantidad_en_stock"),
                 val.get("precio_venta")

@@ -78,10 +78,10 @@ def menu():
         2. Obtener clientes con region indefinida
         3. Obtener clientes de una region
         4. Obtener clientes de una ciudad
+        0. Salir
         """)
     
     op = input("Ingrese opcion: ")
-    
     while True:
         if op == "1":
             x = input("Ingrese el pais en el que desea buscar: ")
@@ -113,20 +113,23 @@ def menu():
             else:
                 print(f"""Error: Esta ciudad no existe, las ciudades existentes son:
                     {listCiudad}""")
-            
+                
+        elif op == "0":
+            break
+        
         else:
             print("Esta opcion no existe")
-            menu()
+            op = input("Ingrese opcion: ")
         
         
         
         
     again = input(f""" \n Desea realizar otra consulta? (Si / No): """)
-    
+        
     if again.lower() == "si":
-        import modules.again as againM
-        againM.again()
+        None
     else:
         print(f"""
-              Gracias por usar nuestro sistema!
-              """)
+            Gracias por usar nuestro sistema!
+            """)
+        exit()

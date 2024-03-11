@@ -61,9 +61,8 @@ def menu():
         3. Obtener todas las oficinas de un pais
         4. Obtener listado de las oficinas que solo cuentan con la primera linea de direccion
         """)
-
-    op = input("Ingrese opcion: ")
     
+    op = input("Ingrese opcion: ")
     while True:
         if op == "1":
             print(tabulate(getOficinaCiudad(), headers=["Codigo Oficina", "Ciudad"], tablefmt="github"))
@@ -85,18 +84,21 @@ def menu():
         elif op == "4":
             print(tabulate(getOficinaSin2Direccion(), headers=["Codigo Oficina", "Ciudad", "Pais", "Telefono", "Direccion 1", "Direccion 2"], tablefmt="github"))
             break
+        
+        elif op == "0":
+            break
                 
         else:
             print("Esta opcion no existe")
-            menu()
+            op = input("Ingrese opcion: ")
             
             
     again = input(f"""\n Desea realizar otra consulta? (Si / No): """)
     
     if again.lower() == "si":
-        import modules.again as again
-        again.again()
+        None
     else:
         print(f"""
               Gracias por usar nuestro sistema!
               """)
+        exit()
