@@ -17,7 +17,15 @@ def getProductOrnamentales():
 def menu():
     print(f"""
         1. Obtener productos de la gama ornamentales
+        0. Salir
         """)
-    op = int(input("Ingrese opcion"))
-    if op == 1:
-        print(tabulate(getProductOrnamentales(), headers=["ID producto", "Cantidad en stock", "Precio"], tablefmt="grid"))
+    op = input("Ingrese opcion")
+    while True:
+        if op == "1":
+            print(tabulate(getProductOrnamentales(), headers=["ID producto", "Cantidad en stock", "Precio"], tablefmt="grid"))
+            break
+        elif op == "0":
+            break
+        else:
+            print("Esta opcion no existe")
+            op = input("Ingrese opcion")
