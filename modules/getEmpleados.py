@@ -4,7 +4,7 @@ from tabulate import tabulate
 def getEmpleadoJefe(x):
     result = []
     for val in emp.empleado:
-        if(val.get("codigo_jefe") == x):
+        if str(val.get("codigo_jefe")) == x:
             result.append([
                 val.get("nombre"),
                 val.get("apellido1"),
@@ -79,8 +79,8 @@ def menu():
     
     while True:
         if op == "1":
-            x = int(input("Ingrese codigo del Jefe: "))
-            if x in listJefes:
+            x = str(input("Ingrese codigo del Jefe: "))
+            if x in str(listJefes):
                 print(tabulate(getEmpleadoJefe(x), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto", "Codigo Jefe"], tablefmt="github"))
                 break
             else:
