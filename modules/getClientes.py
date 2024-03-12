@@ -1,4 +1,5 @@
 import storage.cliente as cli
+import storage.empleado as emp
 from tabulate import tabulate
 
 def getClientePais(x):
@@ -59,6 +60,24 @@ def getClienteCiudad(x):
             ])
     return result
 
+def getClientesRepresentantes():
+    result = []
+    for val in cli.cliente:
+        codigo = val.get("codigo_empleado_rep_ventas")
+        r1 = val.get("codigo_cliente")
+        r2 = val.get("nombre_cliente")
+        for val in emp.empleado:
+            if codigo == val.get("codigo_empleado"):
+                result.append([
+                r1,
+                r2,
+                val.get("codigo_empleado"),
+                val.get("nombre"),
+                f"{val.get('apellido1')} {val.get('apellido2')}"
+                ])
+                
+    return result
+
 def menu():
     listPais = []
     listRegion = []
@@ -78,6 +97,7 @@ def menu():
         2. Obtener clientes con region indefinida
         3. Obtener clientes de una region
         4. Obtener clientes de una ciudad
+        5. Obtener clientes junto con su representante de ventas
         0. Salir
         """)
     
@@ -113,6 +133,10 @@ def menu():
             else:
                 print(f"""Error: Esta ciudad no existe, las ciudades existentes son:
                     {listCiudad}""")
+                
+        elif op == "5":
+            print("\n" + tabulate(getClientesRepresentantes(), headers=["Codigo Cliente", "Nombre", "Codigo Empleado", "Nombre", "Apellidos"], tablefmt="github"))
+            break
                 
         elif op == "0":
             break
