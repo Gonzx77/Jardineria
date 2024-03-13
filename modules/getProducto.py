@@ -21,7 +21,7 @@ def menu():
             listGamas.append(val.get("gama"))
             
     print(f"""
-        1. Obtener productos de la gama ornamentales
+        1. Obtener productos por gama y cantidad minima de stock
         0. Salir
         """)
     

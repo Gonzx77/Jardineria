@@ -1,5 +1,6 @@
 import storage.cliente as cli
 import storage.empleado as emp
+import storage.pago as pag
 from tabulate import tabulate
 
 def getClientePais(x):
@@ -78,6 +79,54 @@ def getClientesRepresentantes():
                 
     return result
 
+def getClientesRepresentantesPago():
+    result = []
+    for val in cli.cliente:
+        codigoRepresentante = val.get("codigo_empleado_rep_ventas")
+        codigoCliente = val.get("codigo_cliente")
+        r1 = val.get("codigo_cliente")
+        r2 = val.get("nombre_cliente")
+        for val in pag.pago:
+            if codigoCliente == val.get("codigo_cliente"):
+                for val in emp.empleado:
+                    if codigoRepresentante == val.get("codigo_empleado"):
+                        result.append([
+                        r1,
+                        r2,
+                        val.get("codigo_empleado"),
+                        val.get("nombre"),
+                        f"{val.get('apellido1')} {val.get('apellido2')}"
+                        ])       
+    return result
+
+def getClientesRepresentantesNoPago():
+    result = []
+    listCodigoClientePago = []
+    
+    for val in pag.pago:
+        if val.get("codigo_cliente") not in listCodigoClientePago:
+            listCodigoClientePago.append(val.get("codigo_cliente"))
+            print(listCodigoClientePago)
+    
+    for val in cli.cliente:
+        codigoRepresentante = val.get("codigo_empleado_rep_ventas")
+        codigoCliente = val.get("codigo_cliente")
+        r1 = val.get("codigo_cliente")
+        r2 = val.get("nombre_cliente")
+        if codigoCliente not in listCodigoClientePago:
+            for val in emp.empleado:
+                if codigoRepresentante == val.get("codigo_empleado"):
+                    if codigoCliente not in result:
+                        result.append([
+                        r1,
+                        r2,
+                        val.get("codigo_empleado"),
+                        val.get("nombre"),
+                        f"{val.get('apellido1')} {val.get('apellido2')}"
+                        ])
+                               
+    return result
+
 def menu():
     listPais = []
     listRegion = []
@@ -98,6 +147,8 @@ def menu():
         3. Obtener clientes de una region
         4. Obtener clientes de una ciudad
         5. Obtener clientes junto con su representante de ventas
+        6. Obtener clientes que hayan realizado compras junto con su representante de ventas
+        7. Obtener clientes que no hayan realizado compras junto con su representante de ventas
         0. Salir
         """)
     
@@ -136,6 +187,14 @@ def menu():
                 
         elif op == "5":
             print("\n" + tabulate(getClientesRepresentantes(), headers=["Codigo Cliente", "Nombre", "Codigo Empleado", "Nombre", "Apellidos"], tablefmt="github"))
+            break
+        
+        elif op == "6":
+            print("\n" + tabulate(getClientesRepresentantesPago(), headers=["Codigo Cliente", "Nombre", "Codigo Empleado", "Nombre", "Apellidos"], tablefmt="github"))
+            break
+        
+        elif op == "7":
+            print("\n" + tabulate(getClientesRepresentantesNoPago(), headers=["Codigo Cliente", "Nombre", "Codigo Empleado", "Nombre", "Apellidos"], tablefmt="github"))
             break
                 
         elif op == "0":
