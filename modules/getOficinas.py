@@ -1,11 +1,15 @@
-import storage.oficina as of
 from tabulate import tabulate
+import requests
 
+def getAllData():
+    peticion = requests.get("http://172.16.104.45:5505/")
+    data = peticion.json()
+    return data
 
 def getOficinaCiudad():
     result = []
-    for val in of.oficina:
-        if(val.get("codigo_oficina") != None):
+    for val in getAllData():
+        if(val.get("codigo_oficina") != 0):
             result.append([
                 val.get("codigo_oficina"),
                 val.get("ciudad")
@@ -14,7 +18,7 @@ def getOficinaCiudad():
 
 def getOficinaTelefonoDEEspaña():
     result = []
-    for val in of.oficina:
+    for val in getAllData():
         if(val.get("pais") == "España"):
             result.append([
                 val.get("codigo_oficina"),
@@ -25,7 +29,7 @@ def getOficinaTelefonoDEEspaña():
 
 def getOficinaPais(x):
     result = []
-    for val in of.oficina:
+    for val in getAllData():
         if(val.get("pais") == x):
             result.append([
                 val.get("codigo_oficina"),
@@ -37,8 +41,8 @@ def getOficinaPais(x):
 
 def getOficinaSin2Direccion():
     result = []
-    for val in of.oficina:
-        if (val.get("linea_direccion1") != None and val.get("linea_direccion1") != "") and (val.get("linea_direccion2") == None or val.get("linea_direccion2") == ""):
+    for val in getAllData():
+        if (val.get("linea_direccion1") != 0 and val.get("linea_direccion1") != "") and (val.get("linea_direccion2") == 0 or val.get("linea_direccion2") == ""):
             result.append([
                 val.get("codigo_oficina"),
                 val.get("ciudad"),
@@ -51,7 +55,7 @@ def getOficinaSin2Direccion():
 
 def menu():
     listPais = []
-    for val in of.oficina:
+    for val in getAllData():
         if val.get("pais") not in listPais:
             listPais.append(val.get("pais"))
     
@@ -97,7 +101,7 @@ def menu():
     again = input(f"""\n Desea realizar otra consulta? (Si / No): """)
     
     if again.lower() == "si":
-        None
+        0
     else:
         print(f"""
               Gracias por usar nuestro sistema!

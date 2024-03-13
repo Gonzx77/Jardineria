@@ -1,4 +1,4 @@
-empleado = [
+[
     {
         "codigo_empleado": 1,
         "nombre": "Marcos",
@@ -7,7 +7,7 @@ empleado = [
         "extension": "3897",
         "email": "marcos@jardineria.es",
         "codigo_oficina": "TAL-ES",
-        "codigo_jefe": None,
+        "codigo_jefe": 0,
         "puesto": "Director General"
     },
     {

@@ -1,11 +1,22 @@
-import storage.cliente as cli
-import storage.empleado as emp
-import storage.pago as pag
 from tabulate import tabulate
+import requests
+
+def getAllDataCliente():
+    peticion = requests.get("http://172.16.100.138:5503/")
+    data = peticion.json()
+    return data
+def getAllDataEmpleado():
+    peticion = requests.get("http://172.16.100.138:5502/")
+    data = peticion.json()
+    return data
+def getAllDataPago():
+    peticion = requests.get("http://172.16.100.138:5501/")
+    data = peticion.json()
+    return data
 
 def getClientePais(x):
     result = []
-    for val in cli.cliente:
+    for val in getAllDataCliente():
         if(val.get("pais") == x):
             result.append([
                 val.get("codigo_cliente"),
@@ -20,8 +31,8 @@ def getClientePais(x):
 
 def getClienteSinRegion():
     result = []
-    for val in cli.cliente:
-        if(val.get("region") == None):
+    for val in getAllDataCliente():
+        if(val.get("region") == 0):
             result.append([
                 val.get("codigo_cliente"),
                 val.get("nombre_cliente"),
@@ -33,7 +44,7 @@ def getClienteSinRegion():
 
 def getClienteRegion(x):
     result = []
-    for val in cli.cliente:
+    for val in getAllDataCliente():
         if(val.get("region") == x):
             result.append([
                 val.get("codigo_cliente"),
@@ -48,7 +59,7 @@ def getClienteRegion(x):
 
 def getClienteCiudad(x):
     result = []
-    for val in cli.cliente:
+    for val in getAllDataCliente():
         if(val.get("ciudad") == x):
             result.append([
                 val.get("codigo_cliente"),
@@ -63,11 +74,11 @@ def getClienteCiudad(x):
 
 def getClientesRepresentantes():
     result = []
-    for val in cli.cliente:
+    for val in getAllDataCliente():
         codigo = val.get("codigo_empleado_rep_ventas")
         r1 = val.get("codigo_cliente")
         r2 = val.get("nombre_cliente")
-        for val in emp.empleado:
+        for val in getAllDataEmpleado():
             if codigo == val.get("codigo_empleado"):
                 result.append([
                 r1,
@@ -81,14 +92,14 @@ def getClientesRepresentantes():
 
 def getClientesRepresentantesPago():
     result = []
-    for val in cli.cliente:
+    for val in getAllDataCliente():
         codigoRepresentante = val.get("codigo_empleado_rep_ventas")
         codigoCliente = val.get("codigo_cliente")
         r1 = val.get("codigo_cliente")
         r2 = val.get("nombre_cliente")
-        for val in pag.pago:
+        for val in getAllDataPago():
             if codigoCliente == val.get("codigo_cliente"):
-                for val in emp.empleado:
+                for val in getAllDataEmpleado():
                     if codigoRepresentante == val.get("codigo_empleado"):
                         result.append([
                         r1,
@@ -103,18 +114,18 @@ def getClientesRepresentantesNoPago():
     result = []
     listCodigoClientePago = []
     
-    for val in pag.pago:
+    for val in getAllDataPago():
         if val.get("codigo_cliente") not in listCodigoClientePago:
             listCodigoClientePago.append(val.get("codigo_cliente"))
             print(listCodigoClientePago)
     
-    for val in cli.cliente:
+    for val in getAllDataCliente():
         codigoRepresentante = val.get("codigo_empleado_rep_ventas")
         codigoCliente = val.get("codigo_cliente")
         r1 = val.get("codigo_cliente")
         r2 = val.get("nombre_cliente")
         if codigoCliente not in listCodigoClientePago:
-            for val in emp.empleado:
+            for val in getAllDataEmpleado():
                 if codigoRepresentante == val.get("codigo_empleado"):
                     if codigoCliente not in result:
                         result.append([
@@ -131,13 +142,13 @@ def menu():
     listPais = []
     listRegion = []
     listCiudad = []
-    for val in cli.cliente:
+    for val in getAllDataCliente():
         if val.get("pais") not in listPais:
             listPais.append(val.get("pais"))
-    for val in cli.cliente:
+    for val in getAllDataCliente():
         if val.get("region") not in listRegion:
             listRegion.append(val.get("region"))
-    for val in cli.cliente:
+    for val in getAllDataCliente():
         if val.get("ciudad") not in listCiudad:
             listCiudad.append(val.get("ciudad"))
     
@@ -209,9 +220,7 @@ def menu():
         
     again = input(f""" \n Desea realizar otra consulta? (Si / No): """)
         
-    if again.lower() == "si":
-        None
-    else:
+    if again.lower() != "si":
         print(f"""
             Gracias por usar nuestro sistema!
             """)
