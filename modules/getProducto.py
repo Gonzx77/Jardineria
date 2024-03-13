@@ -1,9 +1,14 @@
-import storage.producto as pro
 from tabulate import tabulate
+import requests
+
+def getAllData():
+    peticion = requests.get("http://172.16.100.138:5508/")
+    data = peticion.json()
+    return data
 
 def getProductOrnamentales(gama, stock):
     result = []
-    for val in pro.producto:
+    for val in getAllData():
         if val.get("gama") == gama and val.get("cantidad_en_stock") > stock:
             result.append([
                 val.get("gama"),
@@ -16,7 +21,7 @@ def getProductOrnamentales(gama, stock):
 
 def menu():
     listGamas = []
-    for val in pro.producto:
+    for val in getAllData():
         if val.get("gama") not in listGamas:
             listGamas.append(val.get("gama"))
             
@@ -48,9 +53,7 @@ def menu():
             
     again = input(f""" \n Desea realizar otra consulta? (Si / No): """)
         
-    if again.lower() == "si":
-        None
-    else:
+    if again.lower() != "si":
         print(f"""
             Gracias por usar nuestro sistema!
             """)

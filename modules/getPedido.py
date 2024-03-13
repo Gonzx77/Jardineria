@@ -1,11 +1,16 @@
-import storage.pedido as ped
 import storage.detalle_pedido as det
 from datetime import datetime
 from tabulate import tabulate
+import requests
+
+def getAllData():
+    peticion = requests.get("http://172.16.100.138:5507/")
+    data = peticion.json()
+    return data
 
 def getEstadosPedido():
     result = []
-    for val in ped.pedido:
+    for val in getAllData():
         if [val.get("estado")] in result:
             result
         else:
@@ -14,8 +19,8 @@ def getEstadosPedido():
 
 def getPedidosTarde():
     result = []
-    for val in ped.pedido:
-        if val.get("fecha_entrega") != None:
+    for val in getAllData():
+        if val.get("fecha_entrega") != 0:
             fechaI = "/".join(val.get("fecha_esperada").split("-")[::-1])
             fechaF = "/".join(val.get("fecha_entrega").split("-")[::-1])
             
@@ -26,7 +31,7 @@ def getPedidosTarde():
             dif = dif.days
             
             if dif < 0:
-                if val.get("comentario") != None:
+                if val.get("comentario") != 0:
                     result.append([
                         val.get("codigo_pedido"),
                         val.get("codigo_cliente"),
@@ -48,8 +53,8 @@ def getPedidosTarde():
 
 def getPedidos2DiasTarde():
     result = []
-    for val in ped.pedido:
-        if val.get("fecha_entrega") != None:
+    for val in getAllData():
+        if val.get("fecha_entrega") != 0:
             fechaI = "/".join(val.get("fecha_esperada").split("-")[::-1])
             fechaF = "/".join(val.get("fecha_entrega").split("-")[::-1])
             print(fechaI)
@@ -63,7 +68,7 @@ def getPedidos2DiasTarde():
             print(dif)
             
             if dif < -2:
-                if val.get("comentario") != None:
+                if val.get("comentario") != 0:
                     result.append([
                         val.get("codigo_pedido"),
                         val.get("codigo_cliente"),
@@ -86,14 +91,14 @@ def getPedidos2DiasTarde():
 def getPedidosCanceladosAño(x):
     
     result = []
-    for val in ped.pedido:
+    for val in getAllData():
         estado = val.get("estado")
         fecha = "/".join(val.get("fecha_pedido").split("-")[::-1])
         fecha = datetime.strptime(fecha, "%d/%m/%Y")
         año = fecha.year
         
         if estado == "Rechazado" and str(año) == x:
-            if val.get("comentario") == None:
+            if val.get("comentario") == 0:
                 result.append([
                     val.get("fecha_pedido"),
                     val.get("codigo_pedido"),
@@ -109,14 +114,14 @@ def getPedidosCanceladosAño(x):
 
 def getPedidosEnero():
     result = []   
-    for val in ped.pedido:
+    for val in getAllData():
         fecha = val.get("fecha_entrega")
         estado = val.get("estado")
-        if estado == "Entregado" and fecha != None:
+        if estado == "Entregado" and fecha != 0:
             fecha = datetime.strptime(fecha, "%Y-%m-%d")
             mes = fecha.month
             if mes == 1:
-                if val.get("comentario") != None:
+                if val.get("comentario") != 0:
                     result.append([
                         val.get("codigo_pedido"),
                         val.get("comentario")
@@ -130,7 +135,7 @@ def getPedidosEnero():
 
 def menu():
     listAños = []
-    for val in ped.pedido:
+    for val in getAllData():
         fecha = "/".join(val.get("fecha_pedido").split("-")[::-1])
         fecha = datetime.strptime(fecha, "%d/%m/%Y")
         año = fecha.year
@@ -179,9 +184,7 @@ def menu():
             
     again = input(f""" \n Desea realizar otra consulta? (Si / No): """)
         
-    if again.lower() == "si":
-        None
-    else:
+    if again.lower() != "si":
         print(f"""
             Gracias por usar nuestro sistema!
             """)
