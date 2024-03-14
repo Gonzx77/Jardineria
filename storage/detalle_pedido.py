@@ -157,7 +157,6 @@ detalle_pedido = [
         "codigo_pedido": 4,
         "codigo_producto": "OR-155",
         "cantidad": 4,
-        "codigo_producto": "OR-156",
         "precio_unidad": 6.0,
         "numero_linea": 3
     },
