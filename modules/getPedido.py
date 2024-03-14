@@ -20,7 +20,7 @@ def getEstadosPedido():
 def getPedidosTarde():
     result = []
     for val in getAllData():
-        if val.get("fecha_entrega") != 0:
+        if val.get("fecha_entrega") != None:
             fechaI = "/".join(val.get("fecha_esperada").split("-")[::-1])
             fechaF = "/".join(val.get("fecha_entrega").split("-")[::-1])
             
@@ -30,8 +30,8 @@ def getPedidosTarde():
             dif = start.date() - end.date()
             dif = dif.days
             
-            if dif < 0:
-                if val.get("comentario") != 0:
+            if dif < None:
+                if val.get("comentario") != None:
                     result.append([
                         val.get("codigo_pedido"),
                         val.get("codigo_cliente"),
@@ -54,7 +54,7 @@ def getPedidosTarde():
 def getPedidos2DiasTarde():
     result = []
     for val in getAllData():
-        if val.get("fecha_entrega") != 0:
+        if val.get("fecha_entrega") != None:
             fechaI = "/".join(val.get("fecha_esperada").split("-")[::-1])
             fechaF = "/".join(val.get("fecha_entrega").split("-")[::-1])
             print(fechaI)
@@ -68,7 +68,7 @@ def getPedidos2DiasTarde():
             print(dif)
             
             if dif < -2:
-                if val.get("comentario") != 0:
+                if val.get("comentario") != None:
                     result.append([
                         val.get("codigo_pedido"),
                         val.get("codigo_cliente"),
@@ -98,7 +98,7 @@ def getPedidosCanceladosAño(x):
         año = fecha.year
         
         if estado == "Rechazado" and str(año) == x:
-            if val.get("comentario") == 0:
+            if val.get("comentario") == None:
                 result.append([
                     val.get("fecha_pedido"),
                     val.get("codigo_pedido"),
@@ -117,11 +117,11 @@ def getPedidosEnero():
     for val in getAllData():
         fecha = val.get("fecha_entrega")
         estado = val.get("estado")
-        if estado == "Entregado" and fecha != 0:
+        if estado == "Entregado" and fecha != None:
             fecha = datetime.strptime(fecha, "%Y-%m-%d")
             mes = fecha.month
             if mes == 1:
-                if val.get("comentario") != 0:
+                if val.get("comentario") != None:
                     result.append([
                         val.get("codigo_pedido"),
                         val.get("comentario")

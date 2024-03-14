@@ -1,5 +1,7 @@
 from tabulate import tabulate
+import modules.postCliente as postCli
 import requests
+import os
 
 def getAllDataCliente():
     peticion = requests.get("http://172.16.100.138:5503/")
@@ -32,7 +34,7 @@ def getClientePais(x):
 def getClienteSinRegion():
     result = []
     for val in getAllDataCliente():
-        if(val.get("region") == 0):
+        if(val.get("region") == None):
             result.append([
                 val.get("codigo_cliente"),
                 val.get("nombre_cliente"),
@@ -139,6 +141,7 @@ def getClientesRepresentantesNoPago():
     return result
 
 def menu():
+    os.system("clear")
     listPais = []
     listRegion = []
     listCiudad = []
@@ -169,6 +172,7 @@ def menu():
             x = input("Ingrese el pais en el que desea buscar: ")
             if x in listPais:
                 print("\n" + tabulate(getClientePais(x), headers=["Codigo", "Nombre", "Contacto", "Telefono", "Ciudad", "Region", "Pais"], tablefmt="github"))
+                os.system("clear")
                 break
             else:
                 print(f"""Error: Este pais no existe, los paises existentes son:
@@ -176,12 +180,14 @@ def menu():
                 
         elif op == "2":
             print("\n" + tabulate(getClienteSinRegion(), headers=["Codigo", "Nombre", "Contacto", "Telefono", "Ciudad"], tablefmt="github"))
+            os.system("clear")
             break
             
         elif op == "3":
             x = input("Ingrese la region en la que desea buscar: ")
             if x in listRegion:
                 print("\n" + tabulate(getClienteRegion(x), headers=["Codigo", "Nombre", "Contacto", "Telefono", "Ciudad", "Region", "Pais"], tablefmt="github"))
+                os.system("clear")
                 break
             else:
                 print(f"""Error: Esta region no existe, las regiones existentes son:
@@ -191,6 +197,7 @@ def menu():
             x = input("Ingrese la ciudad en la que desea buscar: ")
             if x in listCiudad:
                 print("\n" + tabulate(getClienteCiudad(x), headers=["Codigo", "Nombre", "Contacto", "Telefono", "Ciudad", "Region", "Pais"], tablefmt="github"))
+                os.system("clear")
                 break
             else:
                 print(f"""Error: Esta ciudad no existe, las ciudades existentes son:
@@ -198,17 +205,21 @@ def menu():
                 
         elif op == "5":
             print("\n" + tabulate(getClientesRepresentantes(), headers=["Codigo Cliente", "Nombre", "Codigo Empleado", "Nombre", "Apellidos"], tablefmt="github"))
+            os.system("clear")
             break
         
         elif op == "6":
             print("\n" + tabulate(getClientesRepresentantesPago(), headers=["Codigo Cliente", "Nombre", "Codigo Empleado", "Nombre", "Apellidos"], tablefmt="github"))
+            os.system("clear")
             break
         
         elif op == "7":
             print("\n" + tabulate(getClientesRepresentantesNoPago(), headers=["Codigo Cliente", "Nombre", "Codigo Empleado", "Nombre", "Apellidos"], tablefmt="github"))
+            os.system("clear")
             break
                 
         elif op == "0":
+            os.system("clear")
             break
         
         else:

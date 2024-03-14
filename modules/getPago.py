@@ -28,7 +28,7 @@ def getPagoPaypal2008():
     for val in getAllData():
         fecha = val.get("fecha_pago")
         metodo = val.get("forma_pago")
-        if fecha != 0:
+        if fecha != None:
             fecha = datetime.strptime(fecha, "%Y-%m-%d")
             año = fecha.year
             if año == 2008 and metodo == "PayPal":

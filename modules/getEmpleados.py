@@ -24,7 +24,7 @@ def getEmpleadoJefe(x):
 def getJefe():
     result = []
     for val in getAllData():
-        if(val.get("codigo_jefe") == 0):
+        if(val.get("codigo_jefe") == None):
             result.append([
                 val.get("puesto"),
                 val.get("nombre"),
@@ -122,9 +122,7 @@ def menu():
             
     Desea realizar otra consulta? (Si / No): """)
     
-    if again.lower() == "si":
-        0
-    else:
+    if again.lower() != "si":
         print(f"""
             Gracias por usar nuestro sistema!
             """)

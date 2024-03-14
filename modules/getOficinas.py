@@ -9,7 +9,7 @@ def getAllData():
 def getOficinaCiudad():
     result = []
     for val in getAllData():
-        if(val.get("codigo_oficina") != 0):
+        if(val.get("codigo_oficina") != None):
             result.append([
                 val.get("codigo_oficina"),
                 val.get("ciudad")
@@ -42,7 +42,7 @@ def getOficinaPais(x):
 def getOficinaSin2Direccion():
     result = []
     for val in getAllData():
-        if (val.get("linea_direccion1") != 0 and val.get("linea_direccion1") != "") and (val.get("linea_direccion2") == 0 or val.get("linea_direccion2") == ""):
+        if (val.get("linea_direccion1") != None and val.get("linea_direccion1") != "") and (val.get("linea_direccion2") == None or val.get("linea_direccion2") == ""):
             result.append([
                 val.get("codigo_oficina"),
                 val.get("ciudad"),
@@ -101,7 +101,7 @@ def menu():
     again = input(f"""\n Desea realizar otra consulta? (Si / No): """)
     
     if again.lower() == "si":
-        0
+        None
     else:
         print(f"""
               Gracias por usar nuestro sistema!

@@ -7,7 +7,7 @@
         "extension": "3897",
         "email": "marcos@jardineria.es",
         "codigo_oficina": "TAL-ES",
-        "codigo_jefe": 0,
+        "codigo_jefe": null,
         "puesto": "Director General"
     },
     {
