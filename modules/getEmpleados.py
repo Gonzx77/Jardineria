@@ -1,5 +1,7 @@
 from tabulate import tabulate
+import modules.postEmpleado as postEmp
 import requests
+import os
 
 
 def getAllData():
@@ -64,6 +66,7 @@ def getEmpleadoOficina(x):
     return result
 
 def menu():
+    os.system("clear")
     listJefes = []
     listOficinas = []
     for val in getAllData():
@@ -74,50 +77,81 @@ def menu():
             listOficinas.append(val.get("codigo_oficina"))
     
     print(f"""
-        1. Obtener todos los empleados de un Jefe
-        2. Obtener jefe
-        3. Obtener empleados que no son representantes de ventas
-        4. Obtener empleados de una misma oficiona
-        0. Salir
-        """)
+        --- Menu Empleado ---
+          
+            1. Consultar
+            2. Editar Datos Empleado
+          """)
+    
+    opP = input("Ingrese opcion: ")
+
+
+    if opP == "1":
+        print(f"""
+            1. Obtener todos los empleados de un Jefe
+            2. Obtener jefe
+            3. Obtener empleados que no son representantes de ventas
+            4. Obtener empleados de una misma oficiona
+            0. Salir
+            """)
+        
+    elif opP == "2":
+            print(f"""
+            1. Añadir Empleado
+            """)
     
     op = input("Ingrese opcion: ")
     
     while True:
-        if op == "1":
-            x = str(input("Ingrese codigo del Jefe: "))
-            if x in str(listJefes):
-                print(tabulate(getEmpleadoJefe(x), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto", "Codigo Jefe"], tablefmt="github"))
+        if opP == "1":
+            if op == "1":
+                x = str(input("Ingrese codigo del Jefe: "))
+                if x in str(listJefes):
+                    print(tabulate(getEmpleadoJefe(x), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto", "Codigo Jefe"], tablefmt="github"))
+                    input("Presiona cualquier tecla para continuar...")
+                    os.system("clear")
+                    break
+                else:
+                    print(f"""Error: Este Jefe no existe, los Jefes existentes son:
+                        {listJefes}""")
+                    
+            elif op == "2":
+                print(tabulate(getJefe(), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto"], tablefmt="github"))
+                input("Presiona cualquier tecla para continuar...")
+                os.system("clear")
                 break
-            else:
-                print(f"""Error: Este Jefe no existe, los Jefes existentes son:
-                    {listJefes}""")
                 
-        elif op == "2":
-            print(tabulate(getJefe(), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto"], tablefmt="github"))
-            break
+            elif op == "3":
+                print(tabulate(getEmpleadoNoRepresntanteVentas(), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto"], tablefmt="github"))
+                input("Presiona cualquier tecla para continuar...")
+                os.system("clear")
+                break
             
-        elif op == "3":
-            print(tabulate(getEmpleadoNoRepresntanteVentas(), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto"], tablefmt="github"))
-            break
-        
-        elif op == "4":
-            x = input("Ingresa codigo de la oficina: ")
-            if x in listOficinas:
-                print(tabulate(getEmpleadoOficina(x), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto", "Codigo Jefe", "Oficina"], tablefmt="github"))
+            elif op == "4":
+                x = input("Ingresa codigo de la oficina: ")
+                if x in listOficinas:
+                    print(tabulate(getEmpleadoOficina(x), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto", "Codigo Jefe", "Oficina"], tablefmt="github"))
+                    input("Presiona cualquier tecla para continuar...")
+                    os.system("clear")
+                    break
+                else:
+                    print(f"""Error: Esta oficina no existe, las oficinas existentes son:
+                        {listOficinas}""")
+                    
+            elif op == "0":
                 break
+            
             else:
-                print(f"""Error: Esta oficina no existe, las oficinas existentes son:
-                    {listOficinas}""")
-                
-        elif op == "0":
-            break
+                print("Esta opcion no existe")
+                op = input("Ingrese opcion: ")
         
-        else:
-            print("Esta opcion no existe")
-            op = input("Ingrese opcion: ")
-                
-                
+        elif opP == "2":
+            if op == "1":
+                print(postEmp.postEmpleado())
+                input("Presiona cualquier tecla para continuar...")
+                os.system("clear")
+
+
     again = input(f"""
             
     Desea realizar otra consulta? (Si / No): """)
