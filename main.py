@@ -23,7 +23,7 @@ def menuInicial():
                     3. Oficina
                     4. Pago
                     5. Pedido
-        6. Producto
+                    6. Producto
             """)
         
         while True:

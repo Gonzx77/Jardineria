@@ -1,14 +1,11 @@
 from tabulate import tabulate
-import requests
+import modules.getAllData as data
 
-def getAllData():
-    peticion = requests.get("http://172.16.100.138:5508/")
-    data = peticion.json()
-    return data
+
 
 def getProductOrnamentales(gama, stock):
     result = []
-    for val in getAllData():
+    for val in data.Producto():
         if val.get("gama") == gama and val.get("cantidad_en_stock") > stock:
             result.append([
                 val.get("gama"),
@@ -21,7 +18,7 @@ def getProductOrnamentales(gama, stock):
 
 def menu():
     listGamas = []
-    for val in getAllData():
+    for val in data.Producto():
         if val.get("gama") not in listGamas:
             listGamas.append(val.get("gama"))
             

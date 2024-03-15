@@ -1,16 +1,12 @@
 from tabulate import tabulate
 import modules.postOficina as postOfi
-import requests
+import modules.getAllData as data
 import os
 
-def getAllData():
-    peticion = requests.get("http://172.16.100.138:5504/")
-    data = peticion.json()
-    return data
 
 def getOficinaCiudad():
     result = []
-    for val in getAllData():
+    for val in data.Oficina():
         if(val.get("codigo_oficina") != None):
             result.append([
                 val.get("codigo_oficina"),
@@ -20,7 +16,7 @@ def getOficinaCiudad():
 
 def getOficinaTelefonoDEEspaña():
     result = []
-    for val in getAllData():
+    for val in data.Oficina():
         if(val.get("pais") == "España"):
             result.append([
                 val.get("codigo_oficina"),
@@ -31,7 +27,7 @@ def getOficinaTelefonoDEEspaña():
 
 def getOficinaPais(x):
     result = []
-    for val in getAllData():
+    for val in data.Oficina():
         if(val.get("pais") == x):
             result.append([
                 val.get("codigo_oficina"),
@@ -43,7 +39,7 @@ def getOficinaPais(x):
 
 def getOficinaSin2Direccion():
     result = []
-    for val in getAllData():
+    for val in data.Oficina():
         if (val.get("linea_direccion1") != None and val.get("linea_direccion1") != "") and (val.get("linea_direccion2") == None or val.get("linea_direccion2") == ""):
             result.append([
                 val.get("codigo_oficina"),
@@ -57,7 +53,7 @@ def getOficinaSin2Direccion():
 
 def menu():
     listPais = []
-    for val in getAllData():
+    for val in data.Oficina():
         if val.get("pais") not in listPais:
             listPais.append(val.get("pais"))
     

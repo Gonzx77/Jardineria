@@ -1,4 +1,4 @@
-detalle_pedido = [
+[
     {
         "codigo_pedido": 1,
         "codigo_producto": "FR-67",
@@ -1082,233 +1082,230 @@ detalle_pedido = [
     "precio_unidad": 5.0,
     "numero_linea": 3
   },
-  
-    {
-        "codigo_pedido": 50,
-        "codigo_producto": "OR-225",
-        "cantidad": 12,
-        "precio_unidad": 10,
-        "numero_linea": 1,
-    },
-    {
-        "codigo_pedido": 50,
-        "codigo_producto": "OR-226",
-        "cantidad": 15,
-        "precio_unidad": 38,
-        "numero_linea": 2,
-    },
-    {
-        "codigo_pedido": 50,
-        "codigo_producto": "OR-227",
-        "cantidad": 44,
-        "precio_unidad": 64,
-        "numero_linea": 3,
-    },
-    {
-        "codigo_pedido": 51,
-        "codigo_producto": "OR-209",
-        "cantidad": 50,
-        "precio_unidad": 10,
-        "numero_linea": 1,
-    },
-    {
-        "codigo_pedido": 51,
-        "codigo_producto": "OR-210",
-        "cantidad": 80,
-        "precio_unidad": 39,
-        "numero_linea": 2,
-    },
-    {
-        "codigo_pedido": 51,
-        "codigo_producto": "OR-211",
-        "cantidad": 70,
-        "precio_unidad": 59,
-        "numero_linea": 3,
-    },
-    {
-        "codigo_pedido": 53,
-        "codigo_producto": "FR-2",
-        "cantidad": 1,
-        "precio_unidad": 7,
-        "numero_linea": 1,
-    },
-    {
-        "codigo_pedido": 53,
-        "codigo_producto": "FR-85",
-        "cantidad": 1,
-        "precio_unidad": 70,
-        "numero_linea": 3,
-    },
-    {
-        "codigo_pedido": 53,
-        "codigo_producto": "FR-86",
-        "cantidad": 2,
-        "precio_unidad": 11,
-        "numero_linea": 2,
-    },
-    {
-        "codigo_pedido": 53,
-        "codigo_producto": "OR-116",
-        "cantidad": 6,
-        "precio_unidad": 7,
-        "numero_linea": 4,
-    },
-    {
-        "codigo_pedido": 54,
-        "codigo_producto": "11679",
-        "cantidad": 3,
-        "precio_unidad": 14,
-        "numero_linea": 3,
-    },
-    {
-        "codigo_pedido": 54,
-        "codigo_producto": "FR-100",
-        "cantidad": 45,
-        "precio_unidad": 10,
-        "numero_linea": 2,
-    },
-    {
-        "codigo_pedido": 54,
-        "codigo_producto": "FR-18",
-        "cantidad": 5,
-        "precio_unidad": 4,
-        "numero_linea": 1,
-    },
-    {
-        "codigo_pedido": 54,
-        "codigo_producto": "FR-79",
-        "cantidad": 3,
-        "precio_unidad": 22,
-        "numero_linea": 4,
-    },
-    {
-        "codigo_pedido": 54,
-        "codigo_producto": "OR-116",
-        "cantidad": 8,
-        "precio_unidad": 7,
-        "numero_linea": 6,
-    },
-    {
-        "codigo_pedido": 54,
-        "codigo_producto": "OR-123",
-        "cantidad": 3,
-        "precio_unidad": 5,
-        "numero_linea": 5,
-    },
-    
-    {
-        "codigo_pedido": 54,
-        "codigo_producto": "OR-168",
-        "cantidad": 2,
-        "precio_unidad": 10,
-        "numero_linea": 7
-    },
-    {
-        "codigo_pedido": 55,
-        "codigo_producto": "OR-115",
-        "cantidad": 9,
-        "precio_unidad": 7,
-        "numero_linea": 1
-    },
-    {
-        "codigo_pedido": 55,
-        "codigo_producto": "OR-213",
-        "cantidad": 2,
-        "precio_unidad": 266,
-        "numero_linea": 2
-    },
-    {
-        "codigo_pedido": 55,
-        "codigo_producto": "OR-227",
-        "cantidad": 6,
-        "precio_unidad": 64,
-        "numero_linea": 5
-    },
-    {
-        "codigo_pedido": 55,
-        "codigo_producto": "OR-243",
-        "cantidad": 2,
-        "precio_unidad": 64,
-        "numero_linea": 4
-    },
-    {
-        "codigo_pedido": 55,
-        "codigo_producto": "OR-247",
-        "cantidad": 1,
-        "precio_unidad": 462,
-        "numero_linea": 3
-    },
-    {
-        "codigo_pedido": 56,
-        "codigo_producto": "OR-129",
-        "cantidad": 1,
-        "precio_unidad": 115,
-        "numero_linea": 5
-    },
-    {
-        "codigo_pedido": 56,
-        "codigo_producto": "OR-130",
-        "cantidad": 10,
-        "precio_unidad": 18,
-        "numero_linea": 6
-    },
-    {
-        "codigo_pedido": 56,
-        "codigo_producto": "OR-179",
-        "cantidad": 1,
-        "precio_unidad": 6,
-        "numero_linea": 3
-    },
-    {
-        "codigo_pedido": 56,
-        "codigo_producto": "OR-196",
-        "cantidad": 3,
-        "precio_unidad": 10,
-        "numero_linea": 4
-    },
-    {
-        "codigo_pedido": 56,
-        "codigo_producto": "OR-207",
-        "cantidad": 4,
-        "precio_unidad": 4,
-        "numero_linea": 2
-    },
-    {
-        "codigo_pedido": 56,
-        "codigo_producto": "OR-250",
-        "cantidad": 3,
-        "precio_unidad": 10,
-        "numero_linea": 1
-    },
-    {
-        "codigo_pedido": 57,
-        "codigo_producto": "FR-69",
-        "cantidad": 6,
-        "precio_unidad": 91,
-        "numero_linea": 4
-    },
-    {
-        "codigo_pedido": 57,
-        "codigo_producto": "FR-81",
-        "cantidad": 3,
-        "precio_unidad": 49,
-        "numero_linea": 3
-    },
-    {
-        "codigo_pedido": 57,
-        "codigo_producto": "FR-84",
-        "cantidad": 2,
-        "precio_unidad": 13,
-        "numero_linea": 1
-    },
-    {
-        "codigo_pedido": 57,
-        "codigo_producto": "FR-94",
-        "cantidad": 6,
-        "precio_unidad": 9,
-        "numero_linea": 2
-    },
-    
+  {
+      "codigo_pedido": 50,
+      "codigo_producto": "OR-225",
+      "cantidad": 12,
+      "precio_unidad": 10,
+      "numero_linea": 1
+  },
+  {
+      "codigo_pedido": 50,
+      "codigo_producto": "OR-226",
+      "cantidad": 15,
+      "precio_unidad": 38,
+      "numero_linea": 2
+  },
+  {
+      "codigo_pedido": 50,
+      "codigo_producto": "OR-227",
+      "cantidad": 44,
+      "precio_unidad": 64,
+      "numero_linea": 3
+  },
+  {
+      "codigo_pedido": 51,
+      "codigo_producto": "OR-209",
+      "cantidad": 50,
+      "precio_unidad": 10,
+      "numero_linea": 1
+  },
+  {
+      "codigo_pedido": 51,
+      "codigo_producto": "OR-210",
+      "cantidad": 80,
+      "precio_unidad": 39,
+      "numero_linea": 2
+  },
+  {
+      "codigo_pedido": 51,
+      "codigo_producto": "OR-211",
+      "cantidad": 70,
+      "precio_unidad": 59,
+      "numero_linea": 3
+  },
+  {
+      "codigo_pedido": 53,
+      "codigo_producto": "FR-2",
+      "cantidad": 1,
+      "precio_unidad": 7,
+      "numero_linea": 1
+  },
+  {
+      "codigo_pedido": 53,
+      "codigo_producto": "FR-85",
+      "cantidad": 1,
+      "precio_unidad": 70,
+      "numero_linea": 3
+  },
+  {
+      "codigo_pedido": 53,
+      "codigo_producto": "FR-86",
+      "cantidad": 2,
+      "precio_unidad": 11,
+      "numero_linea": 2
+  },
+  {
+      "codigo_pedido": 53,
+      "codigo_producto": "OR-116",
+      "cantidad": 6,
+      "precio_unidad": 7,
+      "numero_linea": 4
+  },
+  {
+      "codigo_pedido": 54,
+      "codigo_producto": "11679",
+      "cantidad": 3,
+      "precio_unidad": 14,
+      "numero_linea": 3
+  },
+  {
+      "codigo_pedido": 54,
+      "codigo_producto": "FR-100",
+      "cantidad": 45,
+      "precio_unidad": 10,
+      "numero_linea": 2
+  },
+  {
+      "codigo_pedido": 54,
+      "codigo_producto": "FR-18",
+      "cantidad": 5,
+      "precio_unidad": 4,
+      "numero_linea": 1
+  },
+  {
+      "codigo_pedido": 54,
+      "codigo_producto": "FR-79",
+      "cantidad": 3,
+      "precio_unidad": 22,
+      "numero_linea": 4
+  },
+  {
+      "codigo_pedido": 54,
+      "codigo_producto": "OR-116",
+      "cantidad": 8,
+      "precio_unidad": 7,
+      "numero_linea": 6
+  },
+  {
+      "codigo_pedido": 54,
+      "codigo_producto": "OR-123",
+      "cantidad": 3,
+      "precio_unidad": 5,
+      "numero_linea": 5
+  },
+  {
+      "codigo_pedido": 54,
+      "codigo_producto": "OR-168",
+      "cantidad": 2,
+      "precio_unidad": 10,
+      "numero_linea": 7
+  },
+  {
+      "codigo_pedido": 55,
+      "codigo_producto": "OR-115",
+      "cantidad": 9,
+      "precio_unidad": 7,
+      "numero_linea": 1
+  },
+  {
+      "codigo_pedido": 55,
+      "codigo_producto": "OR-213",
+      "cantidad": 2,
+      "precio_unidad": 266,
+      "numero_linea": 2
+  },
+  {
+      "codigo_pedido": 55,
+      "codigo_producto": "OR-227",
+      "cantidad": 6,
+      "precio_unidad": 64,
+      "numero_linea": 5
+  },
+  {
+      "codigo_pedido": 55,
+      "codigo_producto": "OR-243",
+      "cantidad": 2,
+      "precio_unidad": 64,
+      "numero_linea": 4
+  },
+  {
+      "codigo_pedido": 55,
+      "codigo_producto": "OR-247",
+      "cantidad": 1,
+      "precio_unidad": 462,
+      "numero_linea": 3
+  },
+  {
+      "codigo_pedido": 56,
+      "codigo_producto": "OR-129",
+      "cantidad": 1,
+      "precio_unidad": 115,
+      "numero_linea": 5
+  },
+  {
+      "codigo_pedido": 56,
+      "codigo_producto": "OR-130",
+      "cantidad": 10,
+      "precio_unidad": 18,
+      "numero_linea": 6
+  },
+  {
+      "codigo_pedido": 56,
+      "codigo_producto": "OR-179",
+      "cantidad": 1,
+      "precio_unidad": 6,
+      "numero_linea": 3
+  },
+  {
+      "codigo_pedido": 56,
+      "codigo_producto": "OR-196",
+      "cantidad": 3,
+      "precio_unidad": 10,
+      "numero_linea": 4
+  },
+  {
+      "codigo_pedido": 56,
+      "codigo_producto": "OR-207",
+      "cantidad": 4,
+      "precio_unidad": 4,
+      "numero_linea": 2
+  },
+  {
+      "codigo_pedido": 56,
+      "codigo_producto": "OR-250",
+      "cantidad": 3,
+      "precio_unidad": 10,
+      "numero_linea": 1
+  },
+  {
+      "codigo_pedido": 57,
+      "codigo_producto": "FR-69",
+      "cantidad": 6,
+      "precio_unidad": 91,
+      "numero_linea": 4
+  },
+  {
+      "codigo_pedido": 57,
+      "codigo_producto": "FR-81",
+      "cantidad": 3,
+      "precio_unidad": 49,
+      "numero_linea": 3
+  },
+  {
+      "codigo_pedido": 57,
+      "codigo_producto": "FR-84",
+      "cantidad": 2,
+      "precio_unidad": 13,
+      "numero_linea": 1
+  },
+  {
+      "codigo_pedido": 57,
+      "codigo_producto": "FR-94",
+      "cantidad": 6,
+      "precio_unidad": 9,
+      "numero_linea": 2
+  },
   {
     "codigo_pedido": 58,
     "codigo_producto": "OR-102",

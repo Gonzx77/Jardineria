@@ -1,17 +1,11 @@
 from tabulate import tabulate
 import modules.postEmpleado as postEmp
-import requests
+import modules.getAllData as data
 import os
-
-
-def getAllData():
-    peticion = requests.get("http://172.16.100.138:5502/")
-    data = peticion.json()
-    return data
 
 def getEmpleadoJefe(x):
     result = []
-    for val in getAllData():
+    for val in data.Empleado():
         if str(val.get("codigo_jefe")) == x:
             result.append([
                 val.get("nombre"),
@@ -25,7 +19,7 @@ def getEmpleadoJefe(x):
 
 def getJefe():
     result = []
-    for val in getAllData():
+    for val in data.Empleado():
         if(val.get("codigo_jefe") == None):
             result.append([
                 val.get("puesto"),
@@ -39,7 +33,7 @@ def getJefe():
 
 def getEmpleadoNoRepresntanteVentas():
     result = []
-    for val in getAllData():
+    for val in data.Empleado():
         if(val.get("puesto") != "Representante Ventas"):
             result.append([
                 val.get("nombre"),
@@ -52,7 +46,7 @@ def getEmpleadoNoRepresntanteVentas():
 
 def getEmpleadoOficina(x):
     result = []
-    for val in getAllData():
+    for val in data.Empleado():
         if(val.get("codigo_oficina") == x):
             result.append([
                 val.get("nombre"),
@@ -69,10 +63,10 @@ def menu():
     os.system("clear")
     listJefes = []
     listOficinas = []
-    for val in getAllData():
+    for val in data.Empleado():
         if val.get("codigo_jefe") not in listJefes:
             listJefes.append(val.get("codigo_jefe"))
-    for val in getAllData():
+    for val in data.Empleado():
         if val.get("codigo_oficina") not in listOficinas:
             listOficinas.append(val.get("codigo_oficina"))
     

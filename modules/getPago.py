@@ -1,15 +1,12 @@
 from datetime import datetime
 from tabulate import tabulate
-import requests
+import modules.getAllData as data
 
-def getAllData():
-    peticion = requests.get("http://172.16.100.138:5506/")
-    data = peticion.json()
-    return data
+
 
 def getPagos2008():
     result = []
-    for val in getAllData():
+    for val in data.Pago():
         fecha = val.get("fecha_pago")
 
         fecha = datetime.strptime(fecha, "%Y-%m-%d")
@@ -25,7 +22,7 @@ def getPagos2008():
 
 def getPagoPaypal2008():
     result=[]
-    for val in getAllData():
+    for val in data.Pago():
         fecha = val.get("fecha_pago")
         metodo = val.get("forma_pago")
         if fecha != None:
@@ -43,14 +40,14 @@ def getPagoPaypal2008():
 
 def getFormasPago():
     result = []
-    for val in getAllData():
+    for val in data.Pago():
         if [val.get("forma_pago")] not in result:
             result.append([val.get("forma_pago")])
     return result
 
 def getComprasCliente(a):
     result = []
-    for val in getAllData():
+    for val in data.Pago():
         if str(val.get("codigo_cliente")) == a:
             result.append([
                 val.get("codigo_cliente"),
@@ -65,7 +62,7 @@ def getComprasCliente(a):
 
 def menu():
     listCliente = []
-    for val in getAllData():
+    for val in data.Pago():
         if str(val.get("codigo_cliente")) not in listCliente:
             listCliente.append(str(val.get("codigo_cliente")))
     

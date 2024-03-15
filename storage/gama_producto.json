@@ -1,32 +1,32 @@
-gama_producto = [
+[
     {
         "gama": "Herbaceas", 
         "descripcion_texto": "Plantas para jardin decorativas", 
-        "descripcion_html": None,
-        "imagen": None
+        "descripcion_html": null,
+        "imagen": null
     },
     {
         "gama": "Herramientas",
         "descripcion_texto": "Herramientas para todo tipo de acción",
-        "descripcion_html": None,
-        "imagen": None
+        "descripcion_html": null,
+        "imagen": null
     },
     {
         "gama": "Aromáticas",
         "descripcion_texto": "Plantas aromáticas",
-        "descripcion_html": None,
-        "imagen": None
+        "descripcion_html": null,
+        "imagen": null
     },
     {
         "gama": "Frutales",
         "descripcion_texto": "Árboles pequeños de producción frutal",
-        "descripcion_html": None,
-        "imagen": None
+        "descripcion_html": null,
+        "imagen": null
     },
     {
         "gama": "Ornamentales",
         "descripcion_texto": "Plantas vistosas para la decoración del jardín",
-        "descripcion_html": None,
-        "imagen": None
+        "descripcion_html": null,
+        "imagen": null
     }
 ]

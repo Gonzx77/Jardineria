@@ -1,16 +1,14 @@
 import storage.detalle_pedido as det
 from datetime import datetime
 from tabulate import tabulate
-import requests
+import modules.getAllData as data
 
-def getAllData():
-    peticion = requests.get("http://172.16.100.138:5507/")
-    data = peticion.json()
-    return data
+
+
 
 def getEstadosPedido():
     result = []
-    for val in getAllData():
+    for val in data.Pedido():
         if [val.get("estado")] in result:
             result
         else:
@@ -19,7 +17,7 @@ def getEstadosPedido():
 
 def getPedidosTarde():
     result = []
-    for val in getAllData():
+    for val in data.Pedido():
         if val.get("fecha_entrega") != None:
             fechaI = "/".join(val.get("fecha_esperada").split("-")[::-1])
             fechaF = "/".join(val.get("fecha_entrega").split("-")[::-1])
@@ -53,7 +51,7 @@ def getPedidosTarde():
 
 def getPedidos2DiasTarde():
     result = []
-    for val in getAllData():
+    for val in data.Pedido():
         if val.get("fecha_entrega") != None:
             fechaI = "/".join(val.get("fecha_esperada").split("-")[::-1])
             fechaF = "/".join(val.get("fecha_entrega").split("-")[::-1])
@@ -91,7 +89,7 @@ def getPedidos2DiasTarde():
 def getPedidosCanceladosAño(x):
     
     result = []
-    for val in getAllData():
+    for val in data.Pedido():
         estado = val.get("estado")
         fecha = "/".join(val.get("fecha_pedido").split("-")[::-1])
         fecha = datetime.strptime(fecha, "%d/%m/%Y")
@@ -114,7 +112,7 @@ def getPedidosCanceladosAño(x):
 
 def getPedidosEnero():
     result = []   
-    for val in getAllData():
+    for val in data.Pedido():
         fecha = val.get("fecha_entrega")
         estado = val.get("estado")
         if estado == "Entregado" and fecha != None:
@@ -135,7 +133,7 @@ def getPedidosEnero():
 
 def menu():
     listAños = []
-    for val in getAllData():
+    for val in data.Pedido():
         fecha = "/".join(val.get("fecha_pedido").split("-")[::-1])
         fecha = datetime.strptime(fecha, "%d/%m/%Y")
         año = fecha.year
