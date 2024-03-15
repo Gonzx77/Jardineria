@@ -5,7 +5,7 @@ import os
 
 
 def getAllData():
-    peticion = requests.get("http://172.16.104.45:5504/")
+    peticion = requests.get("http://172.16.100.138:5502/")
     data = peticion.json()
     return data
 
@@ -76,34 +76,47 @@ def menu():
         if val.get("codigo_oficina") not in listOficinas:
             listOficinas.append(val.get("codigo_oficina"))
     
-    print(f"""
-        --- Menu Empleado ---
-          
+    while True:
+        os.system("clear")
+        print(f"""
+            --- Menu Empleado ---
+            
             1. Consultar
             2. Editar Datos Empleado
-          """)
-    
-    opP = input("Ingrese opcion: ")
-
-
-    if opP == "1":
-        print(f"""
-            1. Obtener todos los empleados de un Jefe
-            2. Obtener jefe
-            3. Obtener empleados que no son representantes de ventas
-            4. Obtener empleados de una misma oficiona
             0. Salir
             """)
         
-    elif opP == "2":
+        opP = input("Ingrese opcion: ")
+
+
+        if opP == "1":
+            os.system("clear")
             print(f"""
-            1. Añadir Empleado
-            """)
+                1. Obtener todos los empleados de un Jefe
+                2. Obtener jefe
+                3. Obtener empleados que no son representantes de ventas
+                4. Obtener empleados de una misma oficiona
+                0. Salir
+                """)
+            break
+            
+        elif opP == "2":
+                os.system("clear")
+                print(f"""
+                1. Añadir Empleado
+                0. Salir
+                """)
+                break
+        elif opP == "0":
+            break
+        else:
+            print("Esta opcion no existe: ")
+            input("Presione cualquier tecla para continuar...")
     
-    op = input("Ingrese opcion: ")
     
     while True:
         if opP == "1":
+            op = input("Ingrese opcion: ")
             if op == "1":
                 x = str(input("Ingrese codigo del Jefe: "))
                 if x in str(listJefes):
@@ -146,10 +159,18 @@ def menu():
                 op = input("Ingrese opcion: ")
         
         elif opP == "2":
+            op = input("Ingrese opcion: ")
             if op == "1":
                 print(postEmp.postEmpleado())
                 input("Presiona cualquier tecla para continuar...")
                 os.system("clear")
+                break
+            elif op == "0":
+                break
+            else:
+                print("Esta opcion no existe")
+        elif opP == "0":
+            break
 
 
     again = input(f"""
