@@ -104,31 +104,41 @@ def menu():
         if opP == "1":
             op = input("Ingrese opcion: ")
             if op == "1":
+                os.system("clear")
                 print(tabulate(getOficinaCiudad(), headers=["Codigo Oficina", "Ciudad"], tablefmt="github"))
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
                 
             elif op == "2":
+                os.system("clear")
                 print(tabulate(getOficinaTelefonoDEEspaña(), headers=["Codigo Oficina", "Ciudad", "Telefono"], tablefmt="github"))
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
                 
             elif op == "3":
-                x = input("Ingrese pais: ")
-                if x in listPais:
-                    print(tabulate(getOficinaPais(x), headers=["Codigo Oficina", "Ciudad", "Pais", "Telefono"], tablefmt="github"))
-                    input("Presiona cualquier tecla para continuar...")
-                    os.system("clear")
-                    break
-                else:
-                    print(f"""Error: Este pais no existe, los paises existentes son:
-                        {listPais}""")
+                while True:
+                    x = input("Ingrese pais: ")
+                    if x in listPais:
+                        os.system("clear")
+                        print(tabulate(getOficinaPais(x), headers=["Codigo Oficina", "Ciudad", "Pais", "Telefono"], tablefmt="github"))
+                        input(f"""
+        Presiona cualquier tecla para continuar...""")
+                        os.system("clear")
+                        break
+                    else:
+                        print(f"""Error: Este pais no existe, los paises existentes son:
+                            {listPais}""")
+                break
                         
             elif op == "4":
+                os.system("clear")
                 print(tabulate(getOficinaSin2Direccion(), headers=["Codigo Oficina", "Ciudad", "Pais", "Telefono", "Direccion 1", "Direccion 2"], tablefmt="github"))
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
                 
@@ -140,8 +150,10 @@ def menu():
         elif opP == "2":
             op = input("Ingrese opcion: ")
             if op == "1":
+                os.system("clear")
                 print(postOfi.postOficina())
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
             elif op == "0":

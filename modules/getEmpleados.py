@@ -115,41 +115,53 @@ def menu():
     
     
     while True:
+        op = input("Ingrese opcion: ")
         if opP == "1":
-            op = input("Ingrese opcion: ")
             if op == "1":
-                x = str(input("Ingrese codigo del Jefe: "))
-                if x in str(listJefes):
-                    print(tabulate(getEmpleadoJefe(x), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto", "Codigo Jefe"], tablefmt="github"))
-                    input("Presiona cualquier tecla para continuar...")
-                    os.system("clear")
-                    break
-                else:
-                    print(f"""Error: Este Jefe no existe, los Jefes existentes son:
-                        {listJefes}""")
+                while True:
+                    x = str(input("Ingrese codigo del Jefe: "))
+                    if x in str(listJefes):
+                        os.system("clear")
+                        print(tabulate(getEmpleadoJefe(x), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto", "Codigo Jefe"], tablefmt="github"))
+                        input(f"""
+        Presiona cualquier tecla para continuar...""")
+                        os.system("clear")
+                        break
+                    else:
+                        print(f"""Error: Este Jefe no existe, los Jefes existentes son:
+                            {listJefes}""")
+                break
                     
             elif op == "2":
+                os.system("clear")
                 print(tabulate(getJefe(), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto"], tablefmt="github"))
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
                 
             elif op == "3":
+                os.system("clear")
                 print(tabulate(getEmpleadoNoRepresntanteVentas(), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto"], tablefmt="github"))
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
             
             elif op == "4":
-                x = input("Ingresa codigo de la oficina: ")
-                if x in listOficinas:
-                    print(tabulate(getEmpleadoOficina(x), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto", "Codigo Jefe", "Oficina"], tablefmt="github"))
-                    input("Presiona cualquier tecla para continuar...")
-                    os.system("clear")
-                    break
-                else:
-                    print(f"""Error: Esta oficina no existe, las oficinas existentes son:
-                        {listOficinas}""")
+                while True:
+                    x = input("Ingresa codigo de la oficina: ")
+                    if x in listOficinas:
+                        os.system("clear")
+                        print(tabulate(getEmpleadoOficina(x), headers=["Nombre", "Apellido 1", "Apellido 2", "Email", "Puesto", "Codigo Jefe", "Oficina"], tablefmt="github"))
+                        input(f"""
+        Presiona cualquier tecla para continuar...""")
+                        os.system("clear")
+                        break
+                    else:
+                        print(f"""Error: Esta oficina no existe, las oficinas existentes son:
+                            {listOficinas}""")
+                break
                     
             elif op == "0":
                 break
@@ -161,8 +173,10 @@ def menu():
         elif opP == "2":
             op = input("Ingrese opcion: ")
             if op == "1":
+                os.system("clear")
                 print(postEmp.postEmpleado())
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
             elif op == "0":

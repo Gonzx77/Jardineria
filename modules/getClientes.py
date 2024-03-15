@@ -199,59 +199,77 @@ def menu():
         if opP == "1":
             op = input("Ingrese opcion: ")
             if op == "1":
-                x = input("Ingrese el pais en el que desea buscar: ")
-                if x in listPais:
-                    print("\n" + tabulate(getClientePais(x), headers=["Codigo", "Nombre", "Contacto", "Telefono", "Ciudad", "Region", "Pais"], tablefmt="github"))
-                    input("Presiona cualquier tecla para continuar...")
-                    os.system("clear")
-                    break
-                else:
-                    print(f"""Error: Este pais no existe, los paises existentes son:
-                        {listPais}""")
-                    
+                while True:
+                    x = input("Ingrese el pais en el que desea buscar: ")
+                    if x in listPais:
+                        os.system("clear")
+                        print("\n" + tabulate(getClientePais(x), headers=["Codigo", "Nombre", "Contacto", "Telefono", "Ciudad", "Region", "Pais"], tablefmt="github"))
+                        input(f"""
+        Presiona cualquier tecla para continuar...""")
+                        os.system("clear")
+                        break
+                    else:
+                        print(f"""Error: Este pais no existe, los paises existentes son:
+                            {listPais}""")
+                break
             elif op == "2":
                 print("\n" + tabulate(getClienteSinRegion(), headers=["Codigo", "Nombre", "Contacto", "Telefono", "Ciudad"], tablefmt="github"))
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
                 
             elif op == "3":
-                x = input("Ingrese la region en la que desea buscar: ")
-                if x in listRegion:
-                    print("\n" + tabulate(getClienteRegion(x), headers=["Codigo", "Nombre", "Contacto", "Telefono", "Ciudad", "Region", "Pais"], tablefmt="github"))
-                    input("Presiona cualquier tecla para continuar...")
-                    os.system("clear")
-                    break
-                else:
-                    print(f"""Error: Esta region no existe, las regiones existentes son:
-                        {listRegion}""")
+                while True:
+                    x = input("Ingrese la region en la que desea buscar: ")
+                    if x in listRegion:
+                        os.system("clear")
+                        print("\n" + tabulate(getClienteRegion(x), headers=["Codigo", "Nombre", "Contacto", "Telefono", "Ciudad", "Region", "Pais"], tablefmt="github"))
+                        input(f"""
+        Presiona cualquier tecla para continuar...""")
+                        os.system("clear")
+                        break
+                    else:
+                        print(f"""Error: Esta region no existe, las regiones existentes son:
+                            {listRegion}""")
+                break
                     
             elif op == "4":
-                x = input("Ingrese la ciudad en la que desea buscar: ")
-                if x in listCiudad:
-                    print("\n" + tabulate(getClienteCiudad(x), headers=["Codigo", "Nombre", "Contacto", "Telefono", "Ciudad", "Region", "Pais"], tablefmt="github"))
-                    input("Presiona cualquier tecla para continuar...")
-                    os.system("clear")
-                    break
-                else:
-                    print(f"""Error: Esta ciudad no existe, las ciudades existentes son:
-                        {listCiudad}""")
+                while True:
+                    x = input("Ingrese la region en la que desea buscar: ")
+                    if x in listCiudad:
+                        os.system("clear")
+                        print("\n" + tabulate(getClienteCiudad(x), headers=["Codigo", "Nombre", "Contacto", "Telefono", "Ciudad", "Region", "Pais"], tablefmt="github"))
+                        input(f"""
+        Presiona cualquier tecla para continuar...""")
+                        os.system("clear")
+                        break
+                    else:
+                        print(f"""Error: Esta ciudad no existe, las ciudades existentes son:
+                            {listCiudad}""")
+                break
                     
             elif op == "5":
+                os.system("clear")
                 print("\n" + tabulate(getClientesRepresentantes(), headers=["Codigo Cliente", "Nombre", "Codigo Empleado", "Nombre", "Apellidos"], tablefmt="github"))
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
             
             elif op == "6":
+                os.system("clear")
                 print("\n" + tabulate(getClientesRepresentantesPago(), headers=["Codigo Cliente", "Nombre", "Codigo Empleado", "Nombre", "Apellidos"], tablefmt="github"))
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
             
             elif op == "7":
+                os.system("clear")
                 print("\n" + tabulate(getClientesRepresentantesNoPago(), headers=["Codigo Cliente", "Nombre", "Codigo Empleado", "Nombre", "Apellidos"], tablefmt="github"))
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
                     
@@ -265,8 +283,10 @@ def menu():
         elif opP == "2":
             op = input("Ingrese opcion: ")
             if op == "1":
+                os.system("clear")
                 print(postCli.postCliente())
-                input("Presiona cualquier tecla para continuar...")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
             elif op == "0":
