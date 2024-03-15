@@ -4,17 +4,10 @@ import modules as modules
 
 
 import modules.getOficinas as Oficina
-
-import modules.postEmpleado as PostEmpleado
 import modules.getEmpleados as Empleado
-
-import modules.postCliente as PostCliente
 import modules.getClientes as Cliente
-
 import modules.getPedido as Pedido
-
 import modules.getPago as Pago
-
 import modules.getProducto as Producto
 
 
