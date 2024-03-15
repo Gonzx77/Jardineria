@@ -1,5 +1,5 @@
 from tabulate import tabulate
-import modules.postCliente as postCli
+import modules.postAll as post
 import modules.getAllData as data
 import os
 
@@ -273,7 +273,7 @@ def menu():
             op = input("Ingrese opcion: ")
             if op == "1":
                 os.system("clear")
-                print(postCli.postCliente())
+                print(post.Cliente())
                 input(f"""
     Presiona cualquier tecla para continuar...""")
                 os.system("clear")

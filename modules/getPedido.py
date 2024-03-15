@@ -1,4 +1,3 @@
-import storage.detalle_pedido as det
 from datetime import datetime
 from tabulate import tabulate
 import modules.getAllData as data

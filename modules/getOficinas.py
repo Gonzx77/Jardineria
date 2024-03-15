@@ -1,5 +1,5 @@
 from tabulate import tabulate
-import modules.postOficina as postOfi
+import modules.postAll as post
 import modules.getAllData as data
 import os
 
@@ -147,7 +147,7 @@ def menu():
             op = input("Ingrese opcion: ")
             if op == "1":
                 os.system("clear")
-                print(postOfi.postOficina())
+                print(post.Oficina())
                 input(f"""
     Presiona cualquier tecla para continuar...""")
                 os.system("clear")
@@ -166,6 +166,6 @@ def menu():
         None
     else:
         print(f"""
-              Gracias por usar nuestro sistema!
-              """)
+            Gracias por usar nuestro sistema!
+            """)
         exit()

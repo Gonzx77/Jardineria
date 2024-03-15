@@ -1,5 +1,5 @@
 from tabulate import tabulate
-import modules.postEmpleado as postEmp
+import modules.postAll as post
 import modules.getAllData as data
 import os
 
@@ -109,8 +109,8 @@ def menu():
     
     
     while True:
-        op = input("Ingrese opcion: ")
         if opP == "1":
+            op = input("Ingrese opcion: ")
             if op == "1":
                 while True:
                     x = str(input("Ingrese codigo del Jefe: "))
@@ -168,7 +168,7 @@ def menu():
             op = input("Ingrese opcion: ")
             if op == "1":
                 os.system("clear")
-                print(postEmp.postEmpleado())
+                print(post.Empleado())
                 input(f"""
     Presiona cualquier tecla para continuar...""")
                 os.system("clear")

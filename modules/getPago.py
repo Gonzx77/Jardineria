@@ -1,7 +1,8 @@
 from datetime import datetime
 from tabulate import tabulate
 import modules.getAllData as data
-
+import modules.postAll as post
+import os
 
 
 def getPagos2008():
@@ -65,43 +66,111 @@ def menu():
     for val in data.Pago():
         if str(val.get("codigo_cliente")) not in listCliente:
             listCliente.append(str(val.get("codigo_cliente")))
-    
-    print(f"""
-        1. Obtener todos los pagos realizados en 2008
-        2. Obtener todos los pagos hechos con PayPal en 2008
-        3. Obtener todas las posibles formas de pago
-        4. Obtener todas las compras de un cliente
-        0. Salir
-        """)
-    
-    op = input("Ingrese opcion: ")
-    while True:
-        
-        if op == "1":
-            print("\n" + tabulate(getPagos2008(), headers=["Codigo cliente"], tablefmt="github"))
-            break
-        elif op == "2":
-            print("\n" + tabulate(getPagoPaypal2008(), headers=["Codigo cliente", "ID", "Total"], tablefmt="github"))
-            break
-        elif op == "3":
-            print("\n" + tabulate(getFormasPago(), headers=["Formas de pago"], tablefmt="github"))
-            break
-        
-        elif op == "4":
-            x = input("Ingrese codigo del cliente: ")
-            if x in listCliente:
-                print("\n" + tabulate(getComprasCliente(x), headers=["Codigo cliente", "Forma de pago", "ID Transaccion", "Fecha", "Total"], tablefmt="github"))
-                break
-            else:
-                print(f"""Error: Este cliente no existe, los clientes existentes son:
-                    {listCliente}""")
             
-        elif op == "0":
+    while True:        
+    
+        os.system("clear")
+        print(f"""
+                --- Menu Pago ---
+                
+                1. Consultar
+                2. Editar Datos pago
+                0. Salir
+                """)
+        
+        opP = input("Ingrese opcion: ")
+        
+        if opP == "1":
+            os.system("clear")
+            print(f"""
+                1. Obtener todos los pagos realizados en 2008
+                2. Obtener todos los pagos hechos con PayPal en 2008
+                3. Obtener todas las posibles formas de pago
+                4. Obtener todas las compras de un cliente
+                0. Salir
+                """)
+            break
+        
+        elif opP == "2":
+            os.system("clear")
+            print(f"""
+                1. Añadir Cliente
+                0. Salir
+                """)
+            break
+        
+        elif opP == "0":
             break
         
         else:
             print("Esta opcion no existe")
+            input("Presione cualquier tecla para continuar...")
+        
+    
+    while True:
+        if opP == "1":
             op = input("Ingrese opcion: ")
+            if op == "1":
+                os.system("clear")
+                print("\n" + tabulate(getPagos2008(), headers=["Codigo cliente"], tablefmt="github"))
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "2":
+                os.system("clear")
+                print("\n" + tabulate(getPagoPaypal2008(), headers=["Codigo cliente", "ID", "Total"], tablefmt="github"))
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "3":
+                os.system("clear")
+                print("\n" + tabulate(getFormasPago(), headers=["Formas de pago"], tablefmt="github"))
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            
+            elif op == "4":
+                while True:
+                    x = input("Ingrese codigo del cliente: ")
+                    if x in listCliente:
+                        os.system("clear")
+                        print("\n" + tabulate(getComprasCliente(x), headers=["Codigo cliente", "Forma de pago", "ID Transaccion", "Fecha", "Total"], tablefmt="github"))
+                        input(f"""
+    Presiona cualquier tecla para continuar...""")
+                        os.system("clear")
+                        break
+                    else:
+                        print(f"""Error: Este cliente no existe, los clientes existentes son:
+                            {listCliente}""")
+                
+            elif op == "0":
+                break
+            
+            else:
+                print("Esta opcion no existe")
+                op = input("Ingrese opcion: ")
+                
+        elif opP == "2":
+            op = input("Ingrese opcion: ")
+            if op == "1":
+                os.system("clear")
+                print(post.Pago())
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "0":
+                break
+            else:
+                print("Esta opcion no existe")
+                
+        elif opP == "0":
+            break
+
+                
             
             
     again = input(f""" \n Desea realizar otra consulta? (Si / No): """)
