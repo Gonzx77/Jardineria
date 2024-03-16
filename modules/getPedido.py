@@ -1,6 +1,8 @@
 from datetime import datetime
 from tabulate import tabulate
 import modules.getAllData as data
+import modules.postAll as post
+import os
 
 
 
@@ -139,45 +141,111 @@ def menu():
         if año not in listAños:
             listAños.append(año)
     
-    
-    print(f"""
-        1. Obtener todos los posibles estados de un pedido
-        2. Obtener todos los pedidos que se entregaron tarde
-        3. Obtener todos los pedidos que se entregaron 2 o mas dias tarde
-        4. Obtener todos los pedidos cancelados en un año
-        5. Obtener todos los pedidos entregados enero
-        0. Salir
-        """)
-    op = input("Ingrese opcion: ")
-    while True:
-        if op == "1":
-            print(tabulate(getEstadosPedido(), headers=["Estados"], tablefmt="github"))
-            break
-        elif op == "2":
-            print(tabulate(getPedidosTarde(), headers=["Codigo pedido", "Codigo cliente", "fecha esperada", "fecha entregada", "Dias de retrazo", "Comentario"], tablefmt="github"))
-            break
-        elif op == "3":
-            print(tabulate(getPedidos2DiasTarde(), headers=["Codigo pedido", "Codigo cliente", "fecha esperada", "fecha entregada", "Dias antes", "Comentario"], tablefmt="github"))
-            break
-        elif op == "4":
-            x = input("Ingrese año: ")
-            if x in str(listAños):
-                print(tabulate(getPedidosCanceladosAño(x), headers=["Codigo pedido", "Comentario"], tablefmt="github"))
-                break
+    while True: 
+        os.system("clear")
+        print(f"""
+            1. Consulta
+            2. Editar Datos Pedido
+            
+            0. Salir
+            """)
+        opP = input("Ingrese opcion: ")
         
-            else:
-                print(f"""Error: Este año no existe, los años existentes son:
-                    {listAños}""")
+        
+        if opP == "1":
+            os.system("clear")
+            print(f"""
+                1. Obtener todos los posibles estados de un pedido
+                2. Obtener todos los pedidos que se entregaron tarde
+                3. Obtener todos los pedidos que se entregaron 2 o mas dias tarde
+                4. Obtener todos los pedidos cancelados en un año
+                5. Obtener todos los pedidos entregados enero
                 
+                0. Salir
+                """)
+            break
         
-        elif op == "5":
-            print(tabulate(getPedidosEnero(), headers=["Codigo pedido", "Comentario"], tablefmt="github"))
+        elif opP == "2":
+            print(f"""
+                1. Añadir pedido
+                
+                0. Salir
+                """)
             break
-        elif op == "0":
+        
+        elif opP == "0":
             break
+        
         else:
             print("Esta opcion no existe")
+            input("Presione cualquier tecla para continuar...")
+        
+    while True:
+        if opP == "1":
             op = input("Ingrese opcion: ")
+            if op == "1":
+                os.system("clear")
+                print(tabulate(getEstadosPedido(), headers=["Estados"], tablefmt="github"))
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "2":
+                os.system("clear")
+                print(tabulate(getPedidosTarde(), headers=["Codigo pedido", "Codigo cliente", "fecha esperada", "fecha entregada", "Dias de retrazo", "Comentario"], tablefmt="github"))
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "3":
+                os.system("clear")
+                print(tabulate(getPedidos2DiasTarde(), headers=["Codigo pedido", "Codigo cliente", "fecha esperada", "fecha entregada", "Dias antes", "Comentario"], tablefmt="github"))
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "4":
+                while True:
+                    x = input("Ingrese año: ")
+                    if x in str(listAños):
+                        os.system("clear")
+                        print(tabulate(getPedidosCanceladosAño(x), headers=["Codigo pedido", "Comentario"], tablefmt="github"))
+                        input(f"""
+        Presiona cualquier tecla para continuar...""")
+                        os.system("clear")
+                        break
+                    
+                
+                    else:
+                        print(f"""Error: Este año no existe, los años existentes son:
+                            {listAños}""")
+                break
+                    
+            
+            elif op == "5":
+                print(tabulate(getPedidosEnero(), headers=["Codigo pedido", "Comentario"], tablefmt="github"))
+                break
+            elif op == "0":
+                break
+            else:
+                print("Esta opcion no existe")
+                
+        elif opP == "2":
+            op = input("Ingrese opcion: ")
+            if op == "1":
+                os.system("clear")
+                print(post.Pedido())
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "0":
+                break
+            else:
+                print("Esta opcion no existe")
+            
+        elif opP == "0":
+            break
             
     again = input(f""" \n Desea realizar otra consulta? (Si / No): """)
         

@@ -91,13 +91,15 @@ def Pedido():
 
 def Producto():
     newProducto = {
-        "codigo_pedido": int(input("Ingrese codigo del pedido: ")),
-        "fecha_pedido": input("Ingrese fecha del pedido: "),
-        "fecha_esperada": input("Ingrese la fecha del pedido: "),
-        "fecha_entrega": input("Ingrese fecha de entrega del pedido: "),
-        "estado": input("Ingrese estado del pedido: "),
-        "comentario": input("Ingrese comentario del pedido: "),
-        "codigo_cliente": int(input("Ingrese codigo del cliente: "))
+        "codigo_producto": input("Ingrese codigo del producto: "),
+        "nombre": input("Ingrese nombre del pedido: "),
+        "gama": input("Ingrese gama del producto: "),
+        "dimensiones": input("Ingrese la dimension del producto: "),
+        "proveedor": input("Ingrese proveedor del prodcuto: "),
+        "descripcion": input("Ingrese descripcion del producto: "),
+        "cantidad_en_stock": int(input("Ingrese cantidad en stock: ")),
+        "precio_venta": int(input("Ingrese precio de venta: ")),
+        "precio_proveedor": int(input("Ingrese precio de proveedor: "))
     }
 
     peticion = requests.post("http://192.168.1.43:5506/", data=json.dumps(newProducto))

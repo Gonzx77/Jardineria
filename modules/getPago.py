@@ -75,6 +75,7 @@ def menu():
                 
                 1. Consultar
                 2. Editar Datos pago
+                
                 0. Salir
                 """)
         
@@ -87,6 +88,7 @@ def menu():
                 2. Obtener todos los pagos hechos con PayPal en 2008
                 3. Obtener todas las posibles formas de pago
                 4. Obtener todas las compras de un cliente
+                
                 0. Salir
                 """)
             break
@@ -95,6 +97,7 @@ def menu():
             os.system("clear")
             print(f"""
                 1. Añadir Cliente
+                
                 0. Salir
                 """)
             break

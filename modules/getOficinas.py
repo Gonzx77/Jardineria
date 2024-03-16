@@ -65,6 +65,7 @@ def menu():
                 
             1. Consultar
             2. Editar Datos Oficina
+            
             0. Salir
             """)
         
@@ -79,6 +80,7 @@ def menu():
                 2. Obtener listado de oficinas con su telefono de España
                 3. Obtener todas las oficinas de un pais
                 4. Obtener listado de las oficinas que solo cuentan con la primera linea de direccion
+                
                 0. Salir
                 """)
             break
@@ -87,6 +89,7 @@ def menu():
             os.system("clear")
             print(F"""
                 1. Añadir Oficina
+                
                 0. Salir
                 """)
             break

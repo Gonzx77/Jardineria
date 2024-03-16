@@ -25,6 +25,8 @@ def menuInicial():
                     4. Pago
                     5. Pedido
                     6. Producto
+                    
+                    0. Salir
             """)
         
         while True:
@@ -47,6 +49,8 @@ def menuInicial():
             elif op == "6":
                 Producto.menu()
                 break
+            elif op == "0":
+                exit()
             else:
                 print("Esta opcion no existe")
             

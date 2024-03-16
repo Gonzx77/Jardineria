@@ -77,6 +77,7 @@ def menu():
             
             1. Consultar
             2. Editar Datos Empleado
+            
             0. Salir
             """)
         
@@ -90,6 +91,7 @@ def menu():
                 2. Obtener jefe
                 3. Obtener empleados que no son representantes de ventas
                 4. Obtener empleados de una misma oficiona
+                
                 0. Salir
                 """)
             break
@@ -98,6 +100,7 @@ def menu():
                 os.system("clear")
                 print(f"""
                 1. Añadir Empleado
+                
                 0. Salir
                 """)
                 break

@@ -151,6 +151,7 @@ def menu():
             
             1. Consultar
             2. Editar Datos Cliente
+            
             0. Salir
             """)
 
@@ -166,6 +167,7 @@ def menu():
             5. Obtener clientes junto con su representante de ventas
             6. Obtener clientes que hayan realizado compras junto con su representante de ventas
             7. Obtener clientes que no hayan realizado compras junto con su representante de ventas
+            
             0. Salir
             """)
             break
@@ -174,6 +176,7 @@ def menu():
             os.system("clear")
             print(f"""
             1. Añadir Cliente
+            
             0. Salir
             """)
             break
