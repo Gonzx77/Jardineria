@@ -148,6 +148,7 @@ def menu():
                     else:
                         print(f"""Error: Este cliente no existe, los clientes existentes son:
                             {listCliente}""")
+                break
                 
             elif op == "0":
                 break
