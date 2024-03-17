@@ -66,7 +66,7 @@ def menu():
                     if gama in listGamas:
                         print(f"""Gama seleccionada: {gama}""")
                         stock = int(input("Ingrese cantidad minima en stock que desee filtrar: "))
-                        print(tabulate(getProductOrnamentales(gama, stock), headers=["ID producto", "Cantidad en stock", "Precio"], tablefmt="grid"))
+                        print(tabulate(getProductOrnamentales(gama, stock), headers=["Gama", "ID producto", "Cantidad en stock", "Precio"], tablefmt="grid"))
                         input(f"""
     Presiona cualquier tecla para continuar...""")
                         os.system("clear")
