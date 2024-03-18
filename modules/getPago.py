@@ -36,7 +36,7 @@ def getPagoPaypal2008():
                     val.get("total")
                 ])
                 
-    result.sort(key=lambda x: x[1], reverse=True)
+    result.sort(key=lambda x: x[2], reverse=True)
     return result
 
 def getFormasPago():

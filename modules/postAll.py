@@ -10,7 +10,7 @@ def Pago():
         "total": int(input("Ingrese valor total del pago: "))
     }
 
-    peticion = requests.post("http://192.168.1.43:5501/", data=json.dumps(newPago))
+    peticion = requests.post("http://172.16.100.138:5501/", data=json.dumps(newPago))
     res = peticion.json()
     res["Mensaje"] = "Pago Guardado"
     return [res]
@@ -28,7 +28,7 @@ def Empleado():
         "puesto": input("Ingrese puesto del empleado: ")
     }
 
-    peticion = requests.post("http://192.168.1.43:5502/", data=json.dumps(newEmpleado))
+    peticion = requests.post("http://172.16.100.138:5502/", data=json.dumps(newEmpleado))
     res = peticion.json()
     res["Mensaje"] = "Empleado Guardado"
     return [res]
@@ -51,7 +51,7 @@ def Cliente():
         "limite_credito": float(input("Ingrese limite de credito del cliente: "))
     }
 
-    peticion = requests.post("http://192.168.1.43:5503/", data=json.dumps(newCliente))
+    peticion = requests.post("http://172.16.100.138:5503/", data=json.dumps(newCliente))
     res = peticion.json()
     res["Mensaje"] = "Producto Guardado"
     return [res]
@@ -68,7 +68,7 @@ def Oficina():
         "linea_direccion2": input("Ingrese direccion 2 de la oficina: ")
     }
 
-    peticion = requests.post("http://192.168.1.43:5504/", data=json.dumps(newOficina))
+    peticion = requests.post("http://172.16.100.138:5504/", data=json.dumps(newOficina))
     res = peticion.json()
     res["Mensaje"] = "Oficina Guardada"
     return [res]
@@ -84,7 +84,7 @@ def Pedido():
         "codigo_cliente": int(input("Ingrese codigo del cliente: "))
     }
 
-    peticion = requests.post("http://192.168.1.43:5505/", data=json.dumps(newPedido))
+    peticion = requests.post("http://172.16.100.138:5505/", data=json.dumps(newPedido))
     res = peticion.json()
     res["Mensaje"] = "Pedido Guardado"
     return [res]
@@ -102,7 +102,7 @@ def Producto():
         "precio_proveedor": int(input("Ingrese precio de proveedor: "))
     }
 
-    peticion = requests.post("http://192.168.1.43:5506/", data=json.dumps(newProducto))
+    peticion = requests.post("http://172.16.100.138:5506/", data=json.dumps(newProducto))
     res = peticion.json()
     res["Mensaje"] = "Producto Guardado"
     return [res]
@@ -115,7 +115,7 @@ def Gama():
         "imagen": input("Ingrese imagen: ")
     }
 
-    peticion = requests.post("http://192.168.1.43:5506/", data=json.dumps(newGama))
+    peticion = requests.post("http://172.16.100.138:5507/", data=json.dumps(newGama))
     res = peticion.json()
     res["Mensaje"] = "Gama Guardada"
     return [res]
@@ -129,7 +129,7 @@ def DetallePed():
     "numero_linea": int(input("Ingrese numero de linea: "))
     }
 
-    peticion = requests.post("http://192.168.1.43:5506/", data=json.dumps(newDetallePed))
+    peticion = requests.post("http://172.16.100.138:5508/", data=json.dumps(newDetallePed))
     res = peticion.json()
     res["Mensaje"] = "Detalle de pedido Guardado"
     return [res]
