@@ -155,7 +155,6 @@ def menu():
             
             else:
                 print("Esta opcion no existe")
-                op = input("Ingrese opcion: ")
                 
         elif opP == "2":
             op = input("Ingrese opcion: ")

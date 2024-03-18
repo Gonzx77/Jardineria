@@ -29,7 +29,7 @@ def getPedidosTarde():
             dif = start.date() - end.date()
             dif = dif.days
             
-            if dif < None:
+            if dif < 0:
                 if val.get("comentario") != None:
                     result.append([
                         val.get("codigo_pedido"),
