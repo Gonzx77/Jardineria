@@ -1,11 +1,14 @@
 import json
 import requests
-import re
 
+
+import re
+patronFecha = re.compile(r"\d{4}-\d{2}-\d{2}$")
+patronCodigoProducto = re.compile(r"^[A-Z]{2}-\d{3}$")
+patronCodigoOficina = re.compile(r"^[A-Za-z]{3}-[A-Za-z]{2,3}$")
 
 # P A G O
 def Pago():
-    patronFecha = re.compile(r"\d{4}-\d{2}-\d{2}")
     newPago = {}
     while True:
         try:
@@ -42,7 +45,7 @@ def Pago():
         except ValueError:
             print("Error, solo valores enteros !")
 
-    peticion = requests.post("http://154.38.171.54:5506/pago", data=json.dumps(newPago))
+    peticion = requests.post("http://154.38.171.54:5006/pagos", data=json.dumps(newPago))
     res = peticion.json()
     res["Mensaje"] = "Pago Guardado"
     return [res]
@@ -107,7 +110,7 @@ def Empleado():
         except ValueError:
             print("Error, caracteres invalidos !")
 
-    peticion = requests.post("http://154.38.171.54:5503/empleado", data=json.dumps(newEmpleado))
+    peticion = requests.post("http://154.38.171.54:5003/empleados", data=json.dumps(newEmpleado))
     res = peticion.json()
     res["Mensaje"] = "Empleado Guardado"
     return [res]
@@ -202,7 +205,7 @@ def Cliente():
         except ValueError:
             print("Error, solo valores numericos !")
 
-    peticion = requests.post("http://172.16.100.138/cliente", data=json.dumps(newCliente))
+    peticion = requests.post("http://154.38.171.54:5001/cliente", data=json.dumps(newCliente))
     res = peticion.json()
     res["Mensaje"] = "Producto Guardado"
     return [res]
@@ -214,8 +217,11 @@ def Oficina():
     newOficina = {}
     while True:
         try:
-            newOficina["codigo_oficina"] = input("Ingrese codigo de la oficina: ")
-            break
+            r = input("Ingrese codigo de la oficina, usando el siguiente formato: (AAA-AAA o AAA-AA): ")
+            r = r.upper()
+            if patronCodigoOficina.match(r):
+                newOficina["codigo_oficina"] = r
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
@@ -262,44 +268,126 @@ def Oficina():
             print("Error, caracteres invalidos !")
     
 
-    peticion = requests.post("http://154.38.171.54:5505/oficina", data=json.dumps(newOficina))
+    peticion = requests.post("http://154.38.171.54:5005/oficinas", data=json.dumps(newOficina))
     res = peticion.json()
     res["Mensaje"] = "Oficina Guardada"
     return [res]
 
 
 
-
+# P E D I D O
 def Pedido():
-    newPedido = {
-        "codigo_pedido": int(input("Ingrese codigo del pedido: ")),
-        "fecha_pedido": input("Ingrese fecha del pedido: "),
-        "fecha_esperada": input("Ingrese la fecha del pedido: "),
-        "fecha_entrega": input("Ingrese fecha de entrega del pedido: "),
-        "estado": input("Ingrese estado del pedido: "),
-        "comentario": input("Ingrese comentario del pedido: "),
-        "codigo_cliente": int(input("Ingrese codigo del cliente: "))
-    }
+    newPedido = {}
+    while True:
+        try:
+            newPedido["codigo_pedido"] = int(input("Ingrese codigo del pedido: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            r = input("Ingrese fecha del pedido, en el siguiente formato: (YYYY-MM-DD): ")
+            if patronFecha.match(r):
+                newPedido["fecha_esperada"] = r
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            r = input("Ingrese fecha de entrega del pedido, en el siguiente formato: (YYYY-MM-DD): ")
+            if patronFecha.match(r):
+                newPedido["fecha_entrega"] = r 
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newPedido["estado"] = input("Ingrese estado del pedido: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newPedido["comentario"] = input("Ingrese comentario del pedido: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newPedido["codigo_cliente"] = int(input("Ingrese codigo del cliente: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
 
-    peticion = requests.post("http://154.38.171.54:5507/pedido", data=json.dumps(newPedido))
+    peticion = requests.post("http://154.38.171.54:5007/pedidos", data=json.dumps(newPedido))
     res = peticion.json()
     res["Mensaje"] = "Pedido Guardado"
     return [res]
 
-def Producto():
-    newProducto = {
-        "codigo_producto": input("Ingrese codigo del producto: "),
-        "nombre": input("Ingrese nombre del pedido: "),
-        "gama": input("Ingrese gama del producto: "),
-        "dimensiones": input("Ingrese la dimension del producto: "),
-        "proveedor": input("Ingrese proveedor del prodcuto: "),
-        "descripcion": input("Ingrese descripcion del producto: "),
-        "cantidad_en_stock": int(input("Ingrese cantidad en stock: ")),
-        "precio_venta": int(input("Ingrese precio de venta: ")),
-        "precio_proveedor": int(input("Ingrese precio de proveedor: "))
-    }
 
-    peticion = requests.post("http://154.38.171.54:5508/producto", data=json.dumps(newProducto))
+
+# P R O D U C T O
+def Producto():
+    newProducto = {}
+    while True:
+        try:
+            r = input("Ingrese codigo del producto, con el sgieuiente formato: (AA-000): ")
+            r = r.upper()
+            if patronCodigoProducto.match(r):
+                newProducto["codigo_producto"] = r
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newProducto["nombre"] = input("Ingrese nombre del pedido: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newProducto["gama"] = input("Ingrese gama del producto: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newProducto["dimensiones"] = input("Ingrese la dimension del producto: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newProducto["proveedor"] = input("Ingrese proveedor del prodcuto: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newProducto["descripcion"] = input("Ingrese descripcion del producto: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newProducto["cantidad_en_stock"] = int(input("Ingrese cantidad en stock: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            newProducto["precio_venta"] = int(input("Ingrese precio de venta: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            newProducto["precio_proveedor"] = int(input("Ingrese precio de proveedor: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
+
+    peticion = requests.post("http://154.38.171.54:5008/productos", data=json.dumps(newProducto))
     res = peticion.json()
     res["Mensaje"] = "Producto Guardado"
     return [res]
@@ -308,31 +396,74 @@ def Producto():
 
 
 def Gama():
-    newGama = {
-        "gama": input("Ingrese nombre de la gama: "), 
-        "descripcion_texto": input("Ingrese descripcion de la gama: "), 
-        "descripcion_html": input("Descripcion HTML: "),
-        "imagen": input("Ingrese imagen: ")
-    }
+    newGama = {}
+    while True:
+        try:
+            newGama["gama"] = input("Ingrese nombre de la gama: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newGama["descripcion_texto"] = input("Ingrese descripcion de la gama: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newGama["descripcion_html"] = input("Descripcion HTML: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newGama["imagen"] = input("Ingrese imagen: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
 
-    peticion = requests.post("http://154.38.171.54:5504/gama", data=json.dumps(newGama))
+    peticion = requests.post("http://154.38.171.54:5004/gama", data=json.dumps(newGama))
     res = peticion.json()
     res["Mensaje"] = "Gama Guardada"
     return [res]
 
 
 
-
+# D E T A L L E - P E D I D O
 def DetallePed():
-    newDetallePed = {
-    "codigo_pedido": int(input("Ingrese codigo del pedido: ")),
-    "codigo_producto": input("Ingrese codigo del producto: "),
-    "cantidad": int(input("Ingrese la cantidad del producto: ")),
-    "precio_unidad": int(input("Ingrese precio por unidad de producto: ")),
-    "numero_linea": int(input("Ingrese numero de linea: "))
-    }
+    newDetallePed = {}
+    while True:
+        try:
+            newDetallePed["codigo_pedido"] = int(input("Ingrese codigo del pedido: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            newDetallePed["codigo_producto"] = input("Ingrese codigo del producto: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newDetallePed["cantidad"] = int(input("Ingrese la cantidad del producto: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            newDetallePed["precio_unidad"] = int(input("Ingrese precio por unidad de producto: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            newDetallePed["numero_linea"] = int(input("Ingrese numero de linea: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
 
-    peticion = requests.post("http://154.38.171.54:5502/detalle", data=json.dumps(newDetallePed))
+    peticion = requests.post("http://154.38.171.54:5002/detalle_pedido", data=json.dumps(newDetallePed))
     res = peticion.json()
     res["Mensaje"] = "Detalle de pedido Guardado"
     return [res]
