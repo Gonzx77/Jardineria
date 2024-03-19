@@ -1,10 +1,10 @@
 import json
 import requests
+import re
 
 
 # P A G O
 def Pago():
-    import re
     patronFecha = re.compile(r"\d{4}-\d{2}-\d{2}")
     newPago = {}
     while True:
