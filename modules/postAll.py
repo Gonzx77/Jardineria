@@ -42,7 +42,7 @@ def Pago():
         except ValueError:
             print("Error, solo valores enteros !")
 
-    peticion = requests.post("http://172.16.100.138:5501/pago", data=json.dumps(newPago))
+    peticion = requests.post("http://172.16.100.138:5506/pago", data=json.dumps(newPago))
     res = peticion.json()
     res["Mensaje"] = "Pago Guardado"
     return [res]
@@ -107,7 +107,7 @@ def Empleado():
         except ValueError:
             print("Error, caracteres invalidos !")
 
-    peticion = requests.post("http://172.16.100.138:5502/empleado", data=json.dumps(newEmpleado))
+    peticion = requests.post("http://172.16.100.138:5503/empleado", data=json.dumps(newEmpleado))
     res = peticion.json()
     res["Mensaje"] = "Empleado Guardado"
     return [res]
@@ -202,7 +202,7 @@ def Cliente():
         except ValueError:
             print("Error, solo valores numericos !")
 
-    peticion = requests.post("http://172.16.100.138:5503/cliente", data=json.dumps(newCliente))
+    peticion = requests.post("http://172.16.100.138:5501/cliente", data=json.dumps(newCliente))
     res = peticion.json()
     res["Mensaje"] = "Producto Guardado"
     return [res]
@@ -222,7 +222,7 @@ def Oficina():
         "linea_direccion2": input("Ingrese direccion 2 de la oficina: ")
     }
 
-    peticion = requests.post("http://172.16.100.138:5504/oficina", data=json.dumps(newOficina))
+    peticion = requests.post("http://172.16.100.138:5505/oficina", data=json.dumps(newOficina))
     res = peticion.json()
     res["Mensaje"] = "Oficina Guardada"
     return [res]
@@ -241,7 +241,7 @@ def Pedido():
         "codigo_cliente": int(input("Ingrese codigo del cliente: "))
     }
 
-    peticion = requests.post("http://172.16.100.138:5505/pedido", data=json.dumps(newPedido))
+    peticion = requests.post("http://172.16.100.138:5507/pedido", data=json.dumps(newPedido))
     res = peticion.json()
     res["Mensaje"] = "Pedido Guardado"
     return [res]
@@ -259,7 +259,7 @@ def Producto():
         "precio_proveedor": int(input("Ingrese precio de proveedor: "))
     }
 
-    peticion = requests.post("http://172.16.100.138:5506/producto", data=json.dumps(newProducto))
+    peticion = requests.post("http://172.16.100.138:5508/producto", data=json.dumps(newProducto))
     res = peticion.json()
     res["Mensaje"] = "Producto Guardado"
     return [res]
@@ -275,7 +275,7 @@ def Gama():
         "imagen": input("Ingrese imagen: ")
     }
 
-    peticion = requests.post("http://172.16.100.138:5507/gama", data=json.dumps(newGama))
+    peticion = requests.post("http://172.16.100.138:5504/gama", data=json.dumps(newGama))
     res = peticion.json()
     res["Mensaje"] = "Gama Guardada"
     return [res]
@@ -292,7 +292,7 @@ def DetallePed():
     "numero_linea": int(input("Ingrese numero de linea: "))
     }
 
-    peticion = requests.post("http://172.16.100.138:5508/detalle", data=json.dumps(newDetallePed))
+    peticion = requests.post("http://172.16.100.138:5502/detalle", data=json.dumps(newDetallePed))
     res = peticion.json()
     res["Mensaje"] = "Detalle de pedido Guardado"
     return [res]

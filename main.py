@@ -1,7 +1,7 @@
 import os
 import modules as modules
 
-#json-server storage/pago.json -b 5501 & json-server storage/empleado.json -b 5502 & json-server storage/cliente.json -b 5503 & json-server storage/oficina.json -b 5504 & json-server storage/pedido.json -b 5505 & json-server storage/producto.json -b 5506 & json-server storage/gama_producto.json -b 5507 & json-server storage/detalle_pedido.json -b 5508
+#json-server storage/pago.json -b 5506 & json-server storage/empleado.json -b 5503 & json-server storage/cliente.json -b 5501 & json-server storage/oficina.json -b 5505 & json-server storage/pedido.json -b 5507 & json-server storage/producto.json -b 5508 & json-server storage/gama_producto.json -b 5504 & json-server storage/detalle_pedido.json -b 5502
 
 
 import modules.getOficinas as Oficina
