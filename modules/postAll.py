@@ -211,16 +211,56 @@ def Cliente():
 
 # O F I C I N A
 def Oficina():
-    newOficina = {
-        "codigo_oficina": input("Ingrese codigo de la oficina: "),
-        "ciudad": input("Ingrese ciudad de la oficina: "),
-        "pais": input("Ingrese pais de la oficina: "),
-        "region": input("Ingrese region de la oficina: "),
-        "codigo_postal": input("Ingrese codigo postal de la oficina: "),
-        "telefono": input("Ingrese telefono de la oficina: "),
-        "linea_direccion1": input("Ingrese direccion 1 de la oficna: "),
-        "linea_direccion2": input("Ingrese direccion 2 de la oficina: ")
-    }
+    newOficina = {}
+    while True:
+        try:
+            newOficina["codigo_oficina"] = input("Ingrese codigo de la oficina: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newOficina["ciudad"] = input("Ingrese ciudad de la oficina: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newOficina["pais"] = input("Ingrese pais de la oficina: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newOficina["region"] = input("Ingrese region de la oficina: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newOficina["codigo_postal"] = input("Ingrese codigo postal de la oficina: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newOficina["telefono"] = input("Ingrese telefono de la oficina: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newOficina["linea_direccion1"] = input("Ingrese direccion 1 de la oficna: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newOficina["linea_direccion2"] = input("Ingrese direccion 2 de la oficina: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    
 
     peticion = requests.post("http://154.38.171.54:5505/oficina", data=json.dumps(newOficina))
     res = peticion.json()
