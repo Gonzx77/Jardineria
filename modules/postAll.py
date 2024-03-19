@@ -1,38 +1,120 @@
 import json
 import requests
 
+
+# P A G O
 def Pago():
-    newPago = {
-        "codigo_cliente": int(input("Ingrese codigo del cliente: ")),
-        "forma_pago": input("Ingrese forma de pago: "),
-        "id_transaccion": input("Ingrese ID de transaccion: "),
-        "fecha_pago": input("Ingrese fecha del pago: "),
-        "total": int(input("Ingrese valor total del pago: "))
-    }
+    import re
+    patronFecha = re.compile(r"\d{4}-\d{2}-\d{2}")
+    newPago = {}
+    while True:
+        try:
+            newPago["codigo_cliente"] = int(input("Ingrese codigo del cliente: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            newPago["forma_pago"] = input("Ingrese forma de pago: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newPago["id_transaccion"] = input("Ingrese ID de transaccion: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            r = input("Ingrese fecha del pago, en el sigueinte formato: (YYY-MM-DD): ")
+            if patronFecha.match(r):
+                newPago["fecha_pago"] = r
+                break
+            else:
+                print("Error, intentelo de nuevo")
+        except ValueError:
+            PermissionError("Error, caracteres invalidos !")
+    while True:
+        try:
+            newPago["total"] = int(input("Ingrese valor total del pago: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
 
     peticion = requests.post("http://172.16.100.138:5501/", data=json.dumps(newPago))
     res = peticion.json()
     res["Mensaje"] = "Pago Guardado"
     return [res]
 
+
+
+# E M P L E A D O
 def Empleado():
-    newEmpleado = {
-        "codigo_empleado": int(input("Ingrese codigo del empleado: ")),
-        "nombre": input("Ingrese nombre del empleado: "),
-        "apellido1": input("Ingrese apellido 1 del empleado: "),
-        "apellido2": input("Ingrese apellido 2 del empleado: "),
-        "extension": input("Ingresa la extension del empleado: "),
-        "email": input("Ingrese email del empleado: "),
-        "codigo_oficina": input("Ingrese el codigo de la oficina del empleado: "),
-        "codigo_jefe": int(input("Ingrese codigo del jefe: ")),
-        "puesto": input("Ingrese puesto del empleado: ")
-    }
+    newEmpleado = {}
+    while True:
+        try:
+            newEmpleado["codigo_empleado"] = int(input("Ingrese codigo del empleado: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            newEmpleado["nombre"] = input("Ingrese nombre del empleado: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newEmpleado["apellido1"] = input("Ingrese apellido 1 del empleado: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newEmpleado["apellido2"] = input("Ingrese apellido 2 del empleado: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newEmpleado["extension"] = input("Ingresa la extension del empleado: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newEmpleado["email"] = input("Ingrese email del empleado: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newEmpleado["codigo_oficina"] = input("Ingrese el codigo de la oficina del empleado: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            newEmpleado["codigo_jefe"] = int(input("Ingrese codigo del jefe: "))
+            break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            newEmpleado["puesto"] = input("Ingrese puesto del empleado: ")
+            break
+        except ValueError:
+            print("Error, caracteres invalidos !")
 
     peticion = requests.post("http://172.16.100.138:5502/", data=json.dumps(newEmpleado))
     res = peticion.json()
     res["Mensaje"] = "Empleado Guardado"
     return [res]
 
+
+
+# C L I E N T E
 def Cliente():
     newCliente = {
         "codigo_cliente": int(input("Ingrese codigo del cleinte: ")),
@@ -56,6 +138,9 @@ def Cliente():
     res["Mensaje"] = "Producto Guardado"
     return [res]
 
+
+
+
 def Oficina():
     newOficina = {
         "codigo_oficina": input("Ingrese codigo de la oficina: "),
@@ -72,6 +157,9 @@ def Oficina():
     res = peticion.json()
     res["Mensaje"] = "Oficina Guardada"
     return [res]
+
+
+
 
 def Pedido():
     newPedido = {
@@ -107,6 +195,9 @@ def Producto():
     res["Mensaje"] = "Producto Guardado"
     return [res]
 
+
+
+
 def Gama():
     newGama = {
         "gama": input("Ingrese nombre de la gama: "), 
@@ -119,6 +210,9 @@ def Gama():
     res = peticion.json()
     res["Mensaje"] = "Gama Guardada"
     return [res]
+
+
+
 
 def DetallePed():
     newDetallePed = {
