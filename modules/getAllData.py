@@ -3,34 +3,67 @@ import requests
 
 
 def Cliente():
-    peticion = requests.get("http://172.16.100.138:5501/cliente")
+    peticion = requests.get("http://154.38.171.54:5001/cliente")
     data = peticion.json()
     return data
 def DetallePed():
-    peticion = requests.get("http://172.16.100.138:5502/detalle")
+    peticion = requests.get("http://154.38.171.54:5002/detalle")
     data = peticion.json()
     return data
 def Empleado():
-    peticion = requests.get("http://172.16.100.138:5503/empleado")
+    peticion = requests.get("http://154.38.171.54:5003/empleado")
     data = peticion.json()
     return data
 def Gama():
-    peticion = requests.get("http://172.16.100.138:5504/gama")
+    peticion = requests.get("http://154.38.171.54:5004/gama")
     data = peticion.json()
     return data
 def Oficina():
-    peticion = requests.get("http://172.16.100.138:5505/oficina")
+    peticion = requests.get("http://154.38.171.54:5005/oficina")
     data = peticion.json()
     return data
 def Pago():
-    peticion = requests.get("http://172.16.100.138:5506/pago")
+    peticion = requests.get("http://154.38.171.54:5006/pago")
     data = peticion.json()
     return data
 def Pedido():
-    peticion = requests.get("http://172.16.100.138:5507/pedido")
+    peticion = requests.get("http://154.38.171.54:5007/pedido")
     data = peticion.json()
     return data
 def Producto():
-    peticion = requests.get("http://172.16.100.138:5508/producto")
+    peticion = requests.get("http://154.38.171.54:5008/producto")
+    data = peticion.json()
+    return data
+
+def ClienteSV():
+    peticion = requests.get("http://154.38.171.54:5001/cliente")
+    data = peticion.json()
+    return data
+def DetallePedSV():
+    peticion = requests.get("http://154.38.171.54:5002/detalle_pedido")
+    data = peticion.json()
+    return data
+def EmpleadoSV():
+    peticion = requests.get("http://154.38.171.54:5003/empleados")
+    data = peticion.json()
+    return data
+def GamaSV():
+    peticion = requests.get("http://154.38.171.54:5004/gama")
+    data = peticion.json()
+    return data
+def OficinaSV():
+    peticion = requests.get("http://154.38.171.54:5005/oficinas")
+    data = peticion.json()
+    return data
+def PagoSV():
+    peticion = requests.get("http://154.38.171.54:5006/pagos")
+    data = peticion.json()
+    return data
+def PedidoSV():
+    peticion = requests.get("http://154.38.171.54:5007/pedidos")
+    data = peticion.json()
+    return data
+def ProductoSV():
+    peticion = requests.get("http://154.38.171.54:5008/productos")
     data = peticion.json()
     return data
