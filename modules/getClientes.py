@@ -109,7 +109,6 @@ def getClientesRepresentantesNoPago():
     for val in data.Pago():
         if val.get("codigo_cliente") not in listCodigoClientePago:
             listCodigoClientePago.append(val.get("codigo_cliente"))
-            print(listCodigoClientePago)
     
     for val in data.Cliente():
         codigoRepresentante = val.get("codigo_empleado_rep_ventas")
