@@ -1,6 +1,5 @@
 import requests
 
-
 def Cliente():
     peticion = requests.get("http://154.38.171.54:5001/cliente")
     data = peticion.json()
