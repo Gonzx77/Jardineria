@@ -171,7 +171,7 @@ def menu():
                 os.system("clear")
                 while True:
                     try:
-                        id = input("Ingresa ID del pago a eliminar: ")
+                        id = input("Ingresa ID del Pago a eliminar: ")
                         print(remove.Pago(id))
                         break
                     except ValueError:

@@ -1,6 +1,7 @@
 from tabulate import tabulate
 import modules.getAllData as data
 import modules.postAll as post
+import modules.removeAll as remove
 import os
 
 
@@ -48,6 +49,7 @@ def menu():
             os.system("clear")
             print(f"""
                 1. Añadir Producto
+                2. Eliminar Producto
                 
                 0. Salir
                 """)
@@ -90,7 +92,19 @@ def menu():
     Presiona cualquier tecla para continuar...""")
                 os.system("clear")
                 break
-            
+            elif op == "2":
+                os.system("clear")
+                while True:
+                    try:
+                        id = input("Ingresa ID del Producto a eliminar: ")
+                        print(remove.Producto(id))
+                        break
+                    except ValueError:
+                        print("Error, caracteres invalidos !")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
             elif op == "0":
                 break
                 

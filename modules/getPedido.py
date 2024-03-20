@@ -2,6 +2,7 @@ from datetime import datetime
 from tabulate import tabulate
 import modules.getAllData as data
 import modules.postAll as post
+import modules.removeAll as remove
 import os
 
 
@@ -168,6 +169,7 @@ def menu():
         elif opP == "2":
             print(f"""
                 1. Añadir Pedido
+                2. Eliminar Pedido
                 
                 0. Salir
                 """)
@@ -235,6 +237,19 @@ def menu():
             if op == "1":
                 os.system("clear")
                 print(post.Pedido())
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "2":
+                os.system("clear")
+                while True:
+                    try:
+                        id = input("Ingresa ID del Pedido a eliminar: ")
+                        print(remove.Pedido(id))
+                        break
+                    except ValueError:
+                        print("Error, caracteres invalidos !")
                 input(f"""
     Presiona cualquier tecla para continuar...""")
                 os.system("clear")
