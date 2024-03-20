@@ -167,7 +167,7 @@ def menu():
         
         elif opP == "2":
             print(f"""
-                1. Añadir pedido
+                1. Añadir Pedido
                 
                 0. Salir
                 """)

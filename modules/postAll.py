@@ -10,6 +10,12 @@ patronCodigoOficina = re.compile(r"^[A-Za-z]{3}-[A-Za-z]{2,3}$")
 # P A G O
 def Pago():
     newPago = {}
+    
+    peticion = requests.get("http://154.38.171.54:5006/pagos")
+    data = peticion.json()
+    c = len(data)
+    newPago["id"] = str(c + 1)
+    
     while True:
         try:
             newPago["codigo_cliente"] = int(input("Ingrese codigo del cliente: "))
@@ -44,6 +50,7 @@ def Pago():
             break
         except ValueError:
             print("Error, solo valores enteros !")
+            
 
     peticion = requests.post("http://154.38.171.54:5006/pagos", data=json.dumps(newPago))
     res = peticion.json()
@@ -55,6 +62,12 @@ def Pago():
 # E M P L E A D O
 def Empleado():
     newEmpleado = {}
+    
+    peticion = requests.get("http://154.38.171.54:5003/empleados")
+    data = peticion.json()
+    c = len(data)
+    newEmpleado["id"] = str(c + 1)
+    
     while True:
         try:
             newEmpleado["codigo_empleado"] = int(input("Ingrese codigo del empleado: "))
@@ -120,6 +133,12 @@ def Empleado():
 # C L I E N T E
 def Cliente():
     newCliente = {}
+    
+    peticion = requests.get("http://154.38.171.54:5001/cliente")
+    data = peticion.json()
+    c = len(data)
+    newCliente["id"] = str(c + 1)
+    
     while True:
         try:
             newCliente["codigo_cliente"] = int(input("Ingrese codigo del cleinte: "))
@@ -215,6 +234,12 @@ def Cliente():
 # O F I C I N A
 def Oficina():
     newOficina = {}
+    
+    peticion = requests.get("http://154.38.171.54:5005/oficinas")
+    data = peticion.json()
+    c = len(data)
+    newOficina["id"] = str(c + 1)
+    
     while True:
         try:
             r = input("Ingrese codigo de la oficina, usando el siguiente formato: (AAA-AAA o AAA-AA): ")
@@ -278,6 +303,12 @@ def Oficina():
 # P E D I D O
 def Pedido():
     newPedido = {}
+    
+    peticion = requests.get("http://154.38.171.54:5007/pedidos")
+    data = peticion.json()
+    c = len(data)
+    newPedido["id"] = str(c + 1)
+    
     while True:
         try:
             newPedido["codigo_pedido"] = int(input("Ingrese codigo del pedido: "))
@@ -329,6 +360,12 @@ def Pedido():
 # P R O D U C T O
 def Producto():
     newProducto = {}
+    
+    peticion = requests.get("http://154.38.171.54:5008/productos")
+    data = peticion.json()
+    c = len(data)
+    newProducto["id"] = str(c + 1)
+    
     while True:
         try:
             r = input("Ingrese codigo del producto, con el sgieuiente formato: (AA-000): ")
@@ -397,6 +434,12 @@ def Producto():
 
 def Gama():
     newGama = {}
+    
+    peticion = requests.get("http://154.38.171.54:5004/gama")
+    data = peticion.json()
+    c = len(data)
+    newGama["id"] = str(c + 1)
+    
     while True:
         try:
             newGama["gama"] = input("Ingrese nombre de la gama: ")
@@ -432,6 +475,12 @@ def Gama():
 # D E T A L L E - P E D I D O
 def DetallePed():
     newDetallePed = {}
+    
+    peticion = requests.get("http://154.38.171.54:5002/detalle_pedido")
+    data = peticion.json()
+    c = len(data)
+    newDetallePed["id"] = str(c + 1)
+    
     while True:
         try:
             newDetallePed["codigo_pedido"] = int(input("Ingrese codigo del pedido: "))
