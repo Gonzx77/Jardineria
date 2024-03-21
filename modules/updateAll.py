@@ -1,14 +1,12 @@
 import requests
-import json
-
 
 # P A G O
 def Pago(id):
     response = requests.get(f"http://154.38.171.54:5006/pagos/{id}")
     if response.status_code == 200:
-        cliente = response.json()
+        pago = response.json()
         print("Cliente actual:")
-        print(cliente)
+        print(pago)
 
         print("\nIngrese los nuevos valores (deje en blanco para mantener los valores actuales):")
         nuevo_codigo_cliente = input("Nuevo código de cliente: ").strip()
@@ -18,17 +16,17 @@ def Pago(id):
         nuevo_total = input("Nuevo total: ").strip()
 
         if nuevo_codigo_cliente:
-            cliente["codigo_cliente"] = int(nuevo_codigo_cliente)
+            pago["codigo_cliente"] = int(nuevo_codigo_cliente)
         if nueva_forma_pago:
-            cliente["forma_pago"] = nueva_forma_pago
+            pago["forma_pago"] = nueva_forma_pago
         if nueva_id_transaccion:
-            cliente["id_transaccion"] = nueva_id_transaccion
+            pago["id_transaccion"] = nueva_id_transaccion
         if nueva_fecha_pago:
-            cliente["fecha_pago"] = nueva_fecha_pago
+            pago["fecha_pago"] = nueva_fecha_pago
         if nuevo_total:
-            cliente["total"] = int(nuevo_total)
+            pago["total"] = int(nuevo_total)
 
-        response = requests.put(f"http://154.38.171.54:5006/pagos/{id}", json=cliente)
+        response = requests.put(f"http://154.38.171.54:5006/pagos/{id}", json=pago)
         if response.status_code == 200:
             print("Pago actualizado correctamente.")
         else:

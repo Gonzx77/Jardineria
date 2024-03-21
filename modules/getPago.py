@@ -3,7 +3,7 @@ from tabulate import tabulate
 import modules.getAllData as data
 import modules.postAll as post
 import modules.removeAll as remove
-import modules.updateAll as edit
+import modules.updateTest as edit
 import os
 
 
