@@ -9,11 +9,11 @@ import os
 def getProductOrnamentales(gama, stock):
     result = []
     for val in data.Producto():
-        if val.get("gama") == gama and val.get("cantidad_en_stock") > stock:
+        if val.get("gama") == gama and val.get("cantidadEnStock") > stock:
             result.append([
                 val.get("gama"),
                 val.get("codigo_producto"),
-                val.get("cantidad_en_stock"),
+                val.get("cantidadEnStock"),
                 val.get("precio_venta")
             ])
             

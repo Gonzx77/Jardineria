@@ -161,7 +161,7 @@ def menu():
                 while True:
                     try:
                         id = input("Ingresa ID de la Oficina a eliminar: ")
-                        print(remove.Oficina(id))
+                        remove.Oficina(id)
                         break
                     except ValueError:
                         print("Error, caracteres invalidos !")

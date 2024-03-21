@@ -3,6 +3,7 @@ import requests
 
 
 import re
+patronTransaccion = re.compile(r"^[A-Za-z]{2}-[A-Za-z]{3}-\d{6}")
 patronFecha = re.compile(r"\d{4}-\d{2}-\d{2}$")
 patronCodigoProducto = re.compile(r"^[A-Z]{2}-\d{3}$")
 patronCodigoOficina = re.compile(r"^[A-Za-z]{3}-[A-Za-z]{2,3}$")
@@ -25,8 +26,13 @@ def Pago():
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPago["id_transaccion"] = input("Ingrese ID de transaccion: ")
-            break
+            r = input("Ingrese ID de transaccion, en el siguiente formato: (AA-AAA-000000) ")
+            r = r.lower()
+            if patronTransaccion.match(r):
+                newPago["id_transaccion"] = r
+                break
+            else:
+                print("Error, intentelo de nuevo")
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
@@ -377,7 +383,7 @@ def Producto():
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newProducto["cantidad_en_stock"] = int(input("Ingrese cantidad en stock: "))
+            newProducto["cantidadEnStock"] = int(input("Ingrese cantidad en stock: "))
             break
         except ValueError:
             print("Error, solo valores enteros !")
@@ -401,7 +407,7 @@ def Producto():
 
 
 
-
+# G A M A
 def Gama():
     newGama = {}
     

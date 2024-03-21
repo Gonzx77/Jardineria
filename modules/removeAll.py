@@ -67,3 +67,25 @@ def Producto(id):
         print("Producto eliminado")
     else:
         print("Error, este Producto no existe !")
+        
+def Gama(id):
+    listID = []
+    for val in data.Gama():
+        listID.append(val.get("id"))
+        
+    if id in listID:
+        requests.delete(f"http://154.38.171.54:5004/gama/{id}")
+        print("Gama eliminada")
+    else:
+        print("Error, este Producto no existe !")
+        
+def DetallePed(id):
+    listID = []
+    for val in data.DetallePed():
+        listID.append(val.get("id"))
+        
+    if id in listID:
+        requests.delete(f"http://154.38.171.54:5002/detalle_pedido/{id}")
+        print("Detalle de pedido eliminado")
+    else:
+        print("Error, este Producto no existe !")

@@ -287,7 +287,7 @@ def menu():
                 while True:
                     try:
                         id = input("Ingresa ID del Cliente a eliminar: ")
-                        print(remove.Cliente(id))
+                        remove.Cliente(id)
                         break
                     except ValueError:
                         print("Error, caracteres invalidos !")
