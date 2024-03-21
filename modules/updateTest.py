@@ -215,7 +215,7 @@ def Empleado(id):
         except ValueError:
             print("Error, caracteres invalidos !")
 
-    peticion = requests.post(f"http://154.38.171.54:5003/empleados/{id}", json=empleado)
+    peticion = requests.put(f"http://154.38.171.54:5003/empleados/{id}", json=empleado)
     res = peticion.json()
     res["Mensaje"] = "Empleado Guardado"
     return [res]
@@ -223,14 +223,18 @@ def Empleado(id):
 
 
 # C L I E N T E
-def Cliente():
-    newCliente = {}
+def Cliente(id):
+    response = requests.get(f"http://154.38.171.54:5001/cliente/{id}")
+    if response.status_code == 200:
+        cliente = response.json()
+        print("Cliente actual:")
+        print(cliente)
     
     while True:
         try:
             r = input("Ingrese codigo del cleinte: ").strip()
             if r:
-                newCliente["codigo_cliente"] = int(r)
+                cliente["codigo_cliente"] = int(r)
                 print("-Modificado")
                 break
             else:
@@ -242,7 +246,7 @@ def Cliente():
         try:
             r = input("Ingrese nombre del cliente: ").strip()
             if r:
-                newCliente["nombre_cliente"] = r
+                cliente["nombre_cliente"] = r
                 print("-Modificado")
                 break
             else:
@@ -254,7 +258,7 @@ def Cliente():
         try:
             r = input("Ingrese nombre del contacto del cliente: ").strip()
             if r:
-                newCliente["nombre_contacto"] = r
+                cliente["nombre_contacto"] = r
                 print("-Modificado")
                 break
             else:
@@ -266,7 +270,7 @@ def Cliente():
         try:
             r = input("Ingrese apellido del contacto del cliente: ").strip()
             if r:
-                newCliente["apellido_contacto"] = r
+                cliente["apellido_contacto"] = r
                 print("-Modificado")
                 break
             else:
@@ -278,7 +282,7 @@ def Cliente():
         try:
             r = input("Ingrese el telefono del cliente: ").strip()
             if r:
-                newCliente["telefono"] = r
+                cliente["telefono"] = r
                 print("-Modificado")
                 break
             else:
@@ -288,124 +292,231 @@ def Cliente():
             print("Error, caracteres invalidos")
     while True:
         try:
-            newCliente["fax"] = input("Ingresa el fax del cliente: ")
-            break
-        except ValueError:
-            print("Error, caracteres invalidos !")
-    while True:
-        try:
-            newCliente["linea_direccion1"] = input("Ingresa direccion 1 del cliente: ")
-            break
-        except ValueError:
-            print("Error, caracteres invalidos !")
-    while True:
-        try:
-            newCliente["linea_direccion2"] = input("Ingresa direccion 2 del cliente: ")
-            break
-        except ValueError:
-            print("Error, caracteres invalidos !")
-    while True:
-        try:
-            newCliente["ciudad"] = input("Ingresa la ciudad del cliente: ")
-            break
-        except ValueError:
-            print("Error, caracteres invalidos !")
-    while True:
-        try:
-            newCliente["region"] = input("Ingresa la region del cliente: ")
-            break
-        except ValueError:
-            print("Error, caracteres invalidos !")
-    while True:
-        try:
-            newCliente["pais"] = input("Ingrese pais del cliente: ")
-            break
-        except ValueError:
-            print("Error, caracteres invalidos !")
-    while True:
-        try:
-            newCliente["codigo_postal"] = input("Ingrese codigo postal del cliente: ")
-            break
-        except ValueError:
-            print("Error, caracteres invalidos !")
-    while True:
-        try:
-            newCliente["codigo_empleado_rep_ventas"] = int(input("Ingrese codigo del representante de ventas: "))
-            break
-        except ValueError:
-            print("Error, solo valores enteros !")
-    while True:
-        try:
-            newCliente["limite_credito"] = float(input("Ingrese limite de credito del cliente: "))
-            break
-        except ValueError:
-            print("Error, solo valores numericos !")
-
-    peticion = requests.post("http://154.38.171.54:5001/cliente", data=json.dumps(newCliente))
-    res = peticion.json()
-    res["Mensaje"] = "Producto Guardado"
-    return [res]
-
-
-
-# O F I C I N A
-def Oficina():
-    newOficina = {}
-    
-    while True:
-        try:
-            r = input("Ingrese codigo de la oficina, usando el siguiente formato: (AAA-AAA o AAA-AA): ")
-            r = r.upper()
-            if patronCodigoOficina.match(r):
-                newOficina["codigo_oficina"] = r
+            r = input("Ingresa el fax del cliente: ").strip()
+            if r:
+                cliente["fax"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newOficina["ciudad"] = input("Ingrese ciudad de la oficina: ")
-            break
+            r = input("Ingresa direccion 1 del cliente: ").strip()
+            if r:
+                cliente["linea_direccion1"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newOficina["pais"] = input("Ingrese pais de la oficina: ")
-            break
+            r = input("Ingresa direccion 2 del cliente: ").strip()
+            if r:
+                cliente["linea_direccion2"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newOficina["region"] = input("Ingrese region de la oficina: ")
-            break
+            r = input("Ingresa la ciudad del cliente: ").strip()
+            if r:
+                cliente["ciudad"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newOficina["codigo_postal"] = input("Ingrese codigo postal de la oficina: ")
-            break
+            r = input("Ingresa la region del cliente: ").strip()
+            if r:
+                cliente["region"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newOficina["telefono"] = input("Ingrese telefono de la oficina: ")
-            break
+            r = input("Ingrese pais del cliente: ").strip()
+            if r:
+                cliente["pais"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newOficina["linea_direccion1"] = input("Ingrese direccion 1 de la oficna: ")
-            break
+            r = input("Ingrese codigo postal del cliente: ").strip()
+            if r:
+                cliente["codigo_postal"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newOficina["linea_direccion2"] = input("Ingrese direccion 2 de la oficina: ")
-            break
+            r = input("Ingrese codigo del representante de ventas: ").strip()
+            if r:
+                cliente["codigo_empleado_rep_ventas"] = int(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, solo valores enteros !")
+    while True:
+        try:
+            r = input("Ingrese limite de credito del cliente: ").strip()
+            if r:
+                cliente["limite_credito"] = float(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, solo valores numericos !")
+
+    peticion = requests.put(f"http://154.38.171.54:5001/cliente/{id}", json=cliente)
+    res = peticion.json()
+    res["Mensaje"] = "Cliente Guardado"
+    return [res]
+
+
+
+# O F I C I N A
+def Oficina(id):
+    response = requests.get(f"http://154.38.171.54:5005/oficinas/{id}")
+    if response.status_code == 200:
+        oficina = response.json()
+        print("Cliente actual:")
+        print(oficina)
+    
+    while True:
+        try:
+            r = input("Ingrese codigo de la oficina, usando el siguiente formato: (AAA-AAA o AAA-AA): ").strip()
+            if r:
+                r = r.upper()
+                if patronCodigoOficina.match(r):
+                    oficina["codigo_oficina"] = r
+                    print("-Modificado")
+                    break
+                else:
+                    print("Error, debe seguir el formato indicado !")
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            r = input("Ingrese ciudad de la oficina: ").strip()
+            if r:
+                oficina["ciudad"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            r = input("Ingrese pais de la oficina: ").strip()
+            if r:
+                oficina["pais"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            r = input("Ingrese region de la oficina: ").strip()
+            if r:
+                oficina["region"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            r = input("Ingrese codigo postal de la oficina: ").strip()
+            if r:
+                oficina["codigo_postal"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            r = input("Ingrese telefono de la oficina: ").strip()
+            if r:
+                oficina["telefono"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            r = input("Ingrese direccion 1 de la oficna: ").strip()
+            if r:
+                oficina["linea_direccion1"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
+        except ValueError:
+            print("Error, caracteres invalidos !")
+    while True:
+        try:
+            r = input("Ingrese direccion 2 de la oficina: ").strip()
+            if r:
+                oficina["linea_direccion2"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     
 
-    peticion = requests.post("http://154.38.171.54:5005/oficinas", data=json.dumps(newOficina))
+    peticion = requests.put(f"http://154.38.171.54:5005/oficinas/{id}", json=oficina)
     res = peticion.json()
     res["Mensaje"] = "Oficina Guardada"
     return [res]
@@ -413,51 +524,93 @@ def Oficina():
 
 
 # P E D I D O
-def Pedido():
-    newPedido = {}
+def Pedido(id):
+    response = requests.get(f"http://154.38.171.54:5007/pedidos/{id}")
+    if response.status_code == 200:
+        pedido = response.json()
+        print("Cliente actual:")
+        print(pedido)
     
     while True:
         try:
-            newPedido["codigo_pedido"] = int(input("Ingrese codigo del pedido: "))
-            break
+            r = input("Ingrese codigo del pedido: ").strip()
+            if r:
+                pedido["codigo_pedido"] = int(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            r = input("Ingrese fecha del pedido, en el siguiente formato: (YYYY-MM-DD): ")
-            if patronFecha.match(r):
-                newPedido["fecha_esperada"] = r
+            r = input("Ingrese fecha del pedido, en el siguiente formato: (YYYY-MM-DD): ").strip()
+            if r:
+                if patronFecha.match(r):
+                    pedido["fecha_esperada"] = r
+                    print("-Modificado")
+                    break
+                else:
+                    print("Error, debe seguir el formato !")
+            else:
+                print("-Conservado")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            r = input("Ingrese fecha de entrega del pedido, en el siguiente formato: (YYYY-MM-DD): ")
-            if patronFecha.match(r):
-                newPedido["fecha_entrega"] = r 
+            r = input("Ingrese fecha de entrega del pedido, en el siguiente formato: (YYYY-MM-DD): ").strip()
+            if r:
+                if patronFecha.match(r):
+                    pedido["fecha_entrega"] = r 
+                    print("-Modificado")
+                    break
+                else:
+                    print("Error, debe seguir el formato !")
+            else:
+                print("-Conservado")
                 break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPedido["estado"] = input("Ingrese estado del pedido: ")
-            break
+            r = input("Ingrese estado del pedido: ").strip()
+            if r:
+                pedido["estado"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPedido["comentario"] = input("Ingrese comentario del pedido: ")
-            break
+            r = input("Ingrese comentario del pedido: ").strip()
+            if r:
+                pedido["comentario"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newPedido["codigo_cliente"] = int(input("Ingrese codigo del cliente: "))
-            break
+            r = input("Ingrese codigo del cliente: ").strip()
+            if r:
+                pedido["codigo_cliente"] = int(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, solo valores enteros !")
 
-    peticion = requests.post("http://154.38.171.54:5007/pedidos", data=json.dumps(newPedido))
+    peticion = requests.put(f"http://154.38.171.54:5007/pedidos/{id}", json=pedido)
     res = peticion.json()
     res["Mensaje"] = "Pedido Guardado"
     return [res]
@@ -465,68 +618,127 @@ def Pedido():
 
 
 # P R O D U C T O
-def Producto():
-    newProducto = {}
+def Producto(id):
+    response = requests.get(f"http://154.38.171.54:5008/productos/{id}")
+    if response.status_code == 200:
+        producto = response.json()
+        print("Cliente actual:")
+        print(producto)
     
     while True:
         try:
-            r = input("Ingrese codigo del producto, con el sgieuiente formato: (AA-000): ")
-            r = r.upper()
-            if patronCodigoProducto.match(r):
-                newProducto["codigo_producto"] = r
-            break
+            r = input("Ingrese codigo del producto, con el sgieuiente formato: (AA-000): ").strip()
+            if r:
+                r = r.upper()
+                if patronCodigoProducto.match(r):
+                    producto["codigo_producto"] = r
+                    print("-Modificado")
+                    break
+                else:
+                    print("Error, debe segir el formato !")
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newProducto["nombre"] = input("Ingrese nombre del pedido: ")
-            break
+            r = input("Ingrese nombre del pedido: ").strip()
+            if r:
+                producto["nombre"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newProducto["gama"] = input("Ingrese gama del producto: ")
-            break
+            r = input("Ingrese gama del producto: ").strip()
+            if r:
+                producto["gama"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newProducto["dimensiones"] = input("Ingrese la dimension del producto: ")
-            break
+            r = input("Ingrese la dimension del producto: ").strip()
+            if r:
+                producto["dimensiones"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newProducto["proveedor"] = input("Ingrese proveedor del prodcuto: ")
-            break
+            r = input("Ingrese proveedor del prodcuto: ").strip()
+            if r:
+                producto["proveedor"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newProducto["descripcion"] = input("Ingrese descripcion del producto: ")
-            break
+            r = input("Ingrese descripcion del producto: ").strip()
+            if r:
+                producto["descripcion"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newProducto["cantidadEnStock"] = int(input("Ingrese cantidad en stock: "))
-            break
+            r = input("Ingrese cantidad en stock: ").strip()
+            if r:
+                producto["cantidadEnStock"] = int(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newProducto["precio_venta"] = int(input("Ingrese precio de venta: "))
-            break
+            r = input("Ingrese precio de venta: ").strip()
+            if r:
+                producto["precio_venta"] = int(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newProducto["precio_proveedor"] = int(input("Ingrese precio de proveedor: "))
-            break
+            r = input("Ingrese precio de proveedor: ").strip()
+            if r:
+                producto["precio_proveedor"] = int(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, solo valores enteros !")
 
-    peticion = requests.post("http://154.38.171.54:5008/productos", data=json.dumps(newProducto))
+    peticion = requests.put(f"http://154.38.171.54:5008/productos/{id}", json=producto)
     res = peticion.json()
     res["Mensaje"] = "Producto Guardado"
     return [res]
@@ -534,35 +746,63 @@ def Producto():
 
 
 # G A M A
-def Gama():
-    newGama = {}
+def Gama(id):
+    response = requests.get(f"http://154.38.171.54:5004/gama/{id}")
+    if response.status_code == 200:
+        gama = response.json()
+        print("Cliente actual:")
+        print(gama)
     
     while True:
         try:
-            newGama["gama"] = input("Ingrese nombre de la gama: ")
-            break
+            r = input("Ingrese nombre de la gama: ").strip()
+            if r:
+                gama["gama"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newGama["descripcion_texto"] = input("Ingrese descripcion de la gama: ")
-            break
+            r = input("Ingrese descripcion de la gama: ").strip()
+            if r:
+                gama["descripcion_texto"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newGama["descripcion_html"] = input("Descripcion HTML: ")
-            break
+            r =input("Descripcion HTML: ").strip()
+            if r:
+                gama["descripcion_html"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newGama["imagen"] = input("Ingrese imagen: ")
-            break
+            r = input("Ingrese imagen: ").strip()
+            if r:
+                gama["imagen"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
 
-    peticion = requests.post("http://154.38.171.54:5004/gama", data=json.dumps(newGama))
+    peticion = requests.put(f"http://154.38.171.54:5004/gama/{id}", json=gama)
     res = peticion.json()
     res["Mensaje"] = "Gama Guardada"
     return [res]
@@ -570,41 +810,75 @@ def Gama():
 
 
 # D E T A L L E - P E D I D O
-def DetallePed():
-    newDetallePed = {}
+def DetallePed(id):
+    response = requests.get(f"http://154.38.171.54:5002/detalle_pedido/{id}")
+    if response.status_code == 200:
+        detalle = response.json()
+        print("Cliente actual:")
+        print(detalle)
     
     while True:
         try:
-            newDetallePed["codigo_pedido"] = int(input("Ingrese codigo del pedido: "))
-            break
+            r = input("Ingrese codigo del pedido: ").strip()
+            if r:
+                detalle["codigo_pedido"] = int(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newDetallePed["codigo_producto"] = input("Ingrese codigo del producto: ")
-            break
+            r = input("Ingrese codigo del producto: ").strip()
+            if r:
+                detalle["codigo_producto"] = r
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, caracteres invalidos !")
     while True:
         try:
-            newDetallePed["cantidad"] = int(input("Ingrese la cantidad del producto: "))
-            break
+            r = input("Ingrese la cantidad del producto: ").strip()
+            if r:
+                detalle["cantidad"] = int(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newDetallePed["precio_unidad"] = int(input("Ingrese precio por unidad de producto: "))
-            break
+            r = input("Ingrese precio por unidad de producto: ").strip()
+            if r:
+                detalle["precio_unidad"] = int(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, solo valores enteros !")
     while True:
         try:
-            newDetallePed["numero_linea"] = int(input("Ingrese numero de linea: "))
-            break
+            r = input("Ingrese numero de linea: ").strip()
+            if r:
+                detalle["numero_linea"] = int(r)
+                print("-Modificado")
+                break
+            else:
+                print("-Conservado")
+                break
         except ValueError:
             print("Error, solo valores enteros !")
 
-    peticion = requests.post("http://154.38.171.54:5002/detalle_pedido", data=json.dumps(newDetallePed))
+    peticion = requests.put(f"http://154.38.171.54:5002/detalle_pedido/{id}", json = detalle)
     res = peticion.json()
     res["Mensaje"] = "Detalle de pedido Guardado"
     return [res]

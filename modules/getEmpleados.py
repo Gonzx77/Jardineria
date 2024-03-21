@@ -1,7 +1,7 @@
 from tabulate import tabulate
 import modules.postAll as post
 import modules.removeAll as remove
-import modules.updateAll as edit
+import modules.updateTest as edit
 import modules.getAllData as data
 import os
 

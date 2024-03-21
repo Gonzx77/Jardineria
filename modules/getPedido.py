@@ -2,7 +2,7 @@ from datetime import datetime
 from tabulate import tabulate
 import modules.getAllData as data
 import modules.postAll as post
-import modules.updateAll as edit
+import modules.updateTest as edit
 import modules.removeAll as remove
 import os
 
