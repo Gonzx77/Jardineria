@@ -3,6 +3,7 @@ from tabulate import tabulate
 import modules.getAllData as data
 import modules.postAll as post
 import modules.removeAll as remove
+import modules.updateAll as edit
 import os
 
 
@@ -99,6 +100,7 @@ def menu():
             print(f"""
                 1. Añadir Pago
                 2. Eliminar Pago
+                3. Actualizar Pago
                 
                 0. Salir
                 """)
@@ -173,6 +175,19 @@ def menu():
                     try:
                         id = input("Ingresa ID del Pago a eliminar: ")
                         remove.Pago(id)
+                        break
+                    except ValueError:
+                        print("Error, caracteres invalidos !")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "3":
+                os.system("clear")
+                while True:
+                    try:
+                        id = input("Ingresa ID del Pago a editar: ")
+                        edit.Pago(id)
                         break
                     except ValueError:
                         print("Error, caracteres invalidos !")
