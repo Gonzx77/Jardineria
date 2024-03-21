@@ -1,6 +1,7 @@
 from tabulate import tabulate
 import modules.postAll as post
 import modules.removeAll as remove
+import modules.updateAll as edit
 import modules.getAllData as data
 import os
 
@@ -90,6 +91,8 @@ def menu():
             os.system("clear")
             print(F"""
                 1. Añadir Oficina
+                2. Eliminar Oficina
+                3. Editar Oficina
                 
                 0. Salir
                 """)
@@ -162,6 +165,19 @@ def menu():
                     try:
                         id = input("Ingresa ID de la Oficina a eliminar: ")
                         remove.Oficina(id)
+                        break
+                    except ValueError:
+                        print("Error, caracteres invalidos !")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "3":
+                os.system("clear")
+                while True:
+                    try:
+                        id = input("Ingresa ID de la Oficina a eliminar: ")
+                        edit.Oficina(id)
                         break
                     except ValueError:
                         print("Error, caracteres invalidos !")

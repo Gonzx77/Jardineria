@@ -2,6 +2,7 @@ from datetime import datetime
 from tabulate import tabulate
 import modules.getAllData as data
 import modules.postAll as post
+import modules.updateAll as edit
 import modules.removeAll as remove
 import os
 
@@ -170,6 +171,7 @@ def menu():
             print(f"""
                 1. Añadir Pedido
                 2. Eliminar Pedido
+                3. Editar Pedido
                 
                 0. Salir
                 """)
@@ -247,6 +249,19 @@ def menu():
                     try:
                         id = input("Ingresa ID del Pedido a eliminar: ")
                         remove.Pedido(id)
+                        break
+                    except ValueError:
+                        print("Error, caracteres invalidos !")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "3":
+                os.system("clear")
+                while True:
+                    try:
+                        id = input("Ingresa ID del Pedido a eliminar: ")
+                        edit.Pedido(id)
                         break
                     except ValueError:
                         print("Error, caracteres invalidos !")

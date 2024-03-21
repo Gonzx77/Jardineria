@@ -1,6 +1,7 @@
 from tabulate import tabulate
 import modules.postAll as post
 import modules.removeAll as remove
+import modules.updateAll as edit
 import modules.getAllData as data
 import os
 
@@ -177,6 +178,7 @@ def menu():
             print(f"""
             1. Añadir Cliente
             2. Eliminar Cliente
+            3. Editar Cliente
             
             0. Salir
             """)
@@ -288,6 +290,19 @@ def menu():
                     try:
                         id = input("Ingresa ID del Cliente a eliminar: ")
                         remove.Cliente(id)
+                        break
+                    except ValueError:
+                        print("Error, caracteres invalidos !")
+                input(f"""
+    Presiona cualquier tecla para continuar...""")
+                os.system("clear")
+                break
+            elif op == "3":
+                os.system("clear")
+                while True:
+                    try:
+                        id = input("Ingresa ID del Cliente a eliminar: ")
+                        edit.Cliente(id)
                         break
                     except ValueError:
                         print("Error, caracteres invalidos !")
