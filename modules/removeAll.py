@@ -19,7 +19,7 @@ def Empleado(id):
         listID.append(val.get("id"))
         
     if id in listID:
-        requests.delete(f"http://154.38.171.54:5006/pagos/{id}")
+        requests.delete(f"http://154.38.171.54:5003/empleados/{id}")
         print("Empleado eliminado")
     else:
         print("Error, este Empleado no existe !")
